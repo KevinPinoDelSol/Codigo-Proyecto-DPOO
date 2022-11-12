@@ -21,7 +21,7 @@ public class CamionCisterna extends Vehiculo implements AlmacenamientoDeLeche {
     @Override
     public void CargarLeche(int litros) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+}
 
     @Override
     public void DescargarLeche(int litros) {
