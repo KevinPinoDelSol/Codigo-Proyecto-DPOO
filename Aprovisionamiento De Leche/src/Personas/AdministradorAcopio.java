@@ -2,35 +2,37 @@ package Personas;
 
 import Edificios.*;
 import Interfaces.*;
+
+
 public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
 
-	private Silo[] silosAsignados;
+    private Silo[] silosAsignados;
 
-	/**
-	 * 
-	 * @param nombre
-	 * @param CI
-	 * @param apellidos
-	 * @param entrada
-	 * @param empresa
-	 * @param contrasenna
-	 */
-	public AdministradorAcopio(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
-		// TODO - implement AdministradorAcopio.AdministradorAcopio
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param nombre
+     * @param CI
+     * @param apellidos
+     * @param entrada
+     * @param empresa
+     * @param contrasenna
+     */
+    public void AministradorAcopio(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
+        // TODO - implement AdministradorAcopio.AministradorAcopio
+        throw new UnsupportedOperationException();
+    }
 
-	public Silo[] getSilosAsignados() {
-		return this.silosAsignados;
-	}
+    public Silo[] getSilosAsignados() {
+        return this.silosAsignados;
+    }
 
-	/**
-	 * 
-	 * @param silosAsignados
-	 */
-	public void setSilosAsignados(Silo[] silosAsignados) {
-		this.silosAsignados = silosAsignados;
-	}
+    /**
+     * 
+     * @param silosAsignados
+     */
+    public void setSilosAsignados(Silo[] silosAsignados) {
+        this.silosAsignados = silosAsignados;
+    }
 
     @Override
     public void ControlDeCalidad() {

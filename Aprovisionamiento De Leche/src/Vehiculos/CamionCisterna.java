@@ -1,22 +1,22 @@
 package Vehiculos;
 
-import Interfaces.AlmacenamientoDeLeche;
+import Interfaces.*;
 
 public class CamionCisterna extends Vehiculo implements AlmacenamientoDeLeche {
 
-	private int CapacidadMaximaLitros;
-	private int ContenidoActualLitros;
+    private int CapacidadMaximaLitros;
+    private int ContenidoActualLitros;
 
-	/**
-	 * 
-	 * @param id
-	 * @param capacidad
-	 * @param contenidoInicial
-	 */
-	public CamionCisterna(int id, int capacidad, int contenidoInicial) {
-		// TODO - implement CamionCisterna.CamionCisterna
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param id
+     * @param capacidad
+     * @param contenidoInicial
+     */
+    public CamionCisterna(int id, int capacidad, int contenidoInicial) {
+        // TODO - implement CamionCisterna.CamionCisterna
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     public void CargarLeche(int litros) {

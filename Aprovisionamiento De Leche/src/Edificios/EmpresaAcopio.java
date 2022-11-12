@@ -21,10 +21,10 @@ public class EmpresaAcopio {
         return this.nombre;
     }
 
-	/**
-	 * 
-	 * @param nombre
-	 */
+    /**
+     * 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -33,10 +33,10 @@ public class EmpresaAcopio {
         return this.ganaderos;
     }
 
-	/**
-	 * 
-	 * @param ganaderos
-	 */
+    /**
+     * 
+     * @param ganaderos
+     */
     public void setGanaderos(Ganadero[] ganaderos) {
         this.ganaderos = ganaderos;
     }
@@ -45,10 +45,10 @@ public class EmpresaAcopio {
         return this.transportistas;
     }
 
-	/**
-	 * 
-	 * @param transportistas
-	 */
+    /**
+     * 
+     * @param transportistas
+     */
     public void setTransportistas(Transportista[] transportistas) {
         this.transportistas = transportistas;
     }
@@ -57,10 +57,10 @@ public class EmpresaAcopio {
         return this.administradores;
     }
 
-	/**
-	 * 
-	 * @param administradores
-	 */
+    /**
+     * 
+     * @param administradores
+     */
     public void setAdministradores(AdministradorAcopio[] administradores) {
         this.administradores = administradores;
     }
@@ -69,35 +69,36 @@ public class EmpresaAcopio {
         return this.contables;
     }
 
-	/**
-	 * 
-	 * @param contables
-	 */
-	public void setContables(Contable[] contables) {
-		this.contables = contables;
-	}
+    /**
+     * 
+     * @param contables
+     */
+    public void setContables(Contable[] contables) {
+        this.contables = contables;
+    }
 
-        public Secretaria[] getGerentes() {
-            return this.secretarias;
+    public Secretaria[] getGerentes() {
+        // TODO - implement EmpresaAcopio.getGerentes
+        throw new UnsupportedOperationException();
+    }
 
-        }
-
-	/**
-	 * 
-	 * @param gerentes
-	 */
-        public void setGerentes(Secretaria[] gerentes) {
-            this.secretarias = gerentes;
-        }
+    /**
+     * 
+     * @param gerentes
+     */
+    public void setGerentes(Secretaria[] gerentes) {
+        // TODO - implement EmpresaAcopio.setGerentes
+        throw new UnsupportedOperationException();
+    }
 
     public Almacen[] getAlmacenes() {
         return this.almacenes;
     }
 
-	/**
-	 * 
-	 * @param almacen
-	 */
+    /**
+     * 
+     * @param almacen
+     */
     public void setAlmacenes(Almacen[] almacen) {
         this.almacenes = almacen;
     }
@@ -106,56 +107,57 @@ public class EmpresaAcopio {
         return this.registroRechazo;
     }
 
-	/**
-	 * 
-	 * @param registroRechazo
-	 */
+    /**
+     * 
+     * @param registroRechazo
+     */
     public void setRegistroRechazo(RegistroDeRechazo[] registroRechazo) {
         this.registroRechazo = registroRechazo;
     }
 
     public RegistroDeEntrada[] getRegistroEntrada() {
-        return this.registroEntrada;
+        // TODO - implement EmpresaAcopio.getRegistroEntrada
+        throw new UnsupportedOperationException();
     }
 
-	/**
-	 * 
-	 * @param RegistroEntrada
-	 */
+    /**
+     * 
+     * @param RegistroEntrada
+     */
     public void setRegistroEntrada(RegistroDeEntrada[] RegistroEntrada) {
-        this.registroEntrada=RegistroEntrada;
+        // TODO - implement EmpresaAcopio.setRegistroEntrada
+        throw new UnsupportedOperationException();
     }
 
     public Vehiculo[] getVehiculos() {
         return this.vehiculos;
     }
 
-	/**
-	 * 
-	 * @param vehiculos
-	 */
+    /**
+     * 
+     * @param vehiculos
+     */
     public void setVehiculos(Vehiculo[] vehiculos) {
         this.vehiculos = vehiculos;
     }
-        
-	/**
-	 * 
-	 * @param nombre
-	 * @param secretaria
-	 */
+
+    /**
+     * 
+     * @param nombre
+     * @param secretaria
+     */
     public EmpresaAcopio(String nombre, Secretaria secretaria) {
-        this.nombre=nombre;
-        this.secretarias=new Secretaria[1];
-        this.secretarias[0]=secretaria;
+        // TODO - implement EmpresaAcopio.EmpresaAcopio
+        throw new UnsupportedOperationException();
     }
-    
+
     public <E> void  addElement (E elemento) throws Exception{
         E[] nuevoArreglo;
         E[] viejoArreglo;
         if(elemento instanceof Secretaria){
             viejoArreglo=(E[]) this.secretarias;
             nuevoArreglo=(E[]) new Secretaria[this.secretarias.length+1];
-        }
+}
         else if(elemento instanceof Transportista){
             viejoArreglo=(E[]) this.transportistas;
             nuevoArreglo=(E[]) new Transportista[this.transportistas.length+1];

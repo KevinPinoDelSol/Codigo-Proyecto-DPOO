@@ -2,10 +2,10 @@ package Interfaces;
 
 public interface RecepcionDeLeche {
 
-	void ControlDeCalidad();
+    void ControlDeCalidad();
 
-	void RechazarLeche();
+    void RechazarLeche();
 
-	void RecibirLeche();
+    void RecibirLeche();
 
 }
