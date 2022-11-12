@@ -77,18 +77,16 @@ public class EmpresaAcopio {
         this.contables = contables;
     }
 
-    public Secretaria[] getGerentes() {
-        // TODO - implement EmpresaAcopio.getGerentes
-        throw new UnsupportedOperationException();
+    public Secretaria[] getSecretarias() {
+        return this.secretarias;
     }
 
     /**
-     * 
-     * @param gerentes
+     *        
+     * @param secretarias
      */
-    public void setGerentes(Secretaria[] gerentes) {
-        // TODO - implement EmpresaAcopio.setGerentes
-        throw new UnsupportedOperationException();
+    public void setSecretarias(Secretaria[] secretarias) {
+        this.secretarias=secretarias;
     }
 
     public Almacen[] getAlmacenes() {
@@ -120,13 +118,12 @@ public class EmpresaAcopio {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * 
-     * @param RegistroEntrada
+     /**
+     *
+     * @param registroEntrada
      */
-    public void setRegistroEntrada(RegistroDeEntrada[] RegistroEntrada) {
-        // TODO - implement EmpresaAcopio.setRegistroEntrada
-        throw new UnsupportedOperationException();
+    public void setRegistroEntrada(RegistroDeEntrada[] registroEntrada) {
+        this.registroEntrada=registroEntrada;
     }
 
     public Vehiculo[] getVehiculos() {
