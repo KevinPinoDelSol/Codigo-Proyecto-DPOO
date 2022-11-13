@@ -2,6 +2,7 @@ package Edificios;
 
 import Personas.*;
 import DocumentacionEmpresa.*;
+import Excepciones.UsuarioNoEncontradoExcepcion;
 import Vehiculos.*;
 
 public class EmpresaAcopio {
@@ -213,5 +214,21 @@ public class EmpresaAcopio {
         System.arraycopy(viejoArreglo, 0, nuevoArreglo, 0, viejoArreglo.length);
         nuevoArreglo[nuevoArreglo.length-1]=elemento;
         
+    }
+    
+    public Usuario getUserByCI(int CI) throws UsuarioNoEncontradoExcepcion{
+        for(int i=0;i<this.secretarias.length;i++){
+            if(secretarias[i].getCI()==CI) return secretarias[i];
+        }
+        for(int i=0;i<this.transportistas.length;i++){
+            if(transportistas[i].getCI()==CI) return transportistas[i];
+        }
+        for(int i=0;i<this.contables.length;i++){
+            if(contables[i].getCI()==CI) return contables[i];
+        }
+        for(int i=0;i<this.administradores.length;i++){
+            if(administradores[i].getCI()==CI) return administradores[i];
+        }
+        throw new UsuarioNoEncontradoExcepcion();
     }
 }
