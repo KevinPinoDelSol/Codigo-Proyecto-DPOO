@@ -19,8 +19,8 @@ public class Contable extends Usuario {
      * @param contrasenna
      */
     public Contable(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
-        // TODO - implement Contable.Contable
-        throw new UnsupportedOperationException();
+        super( nombre,  apellidos,  CI,  entrada,  empresa, contrasenna);
+
     }
 
 }

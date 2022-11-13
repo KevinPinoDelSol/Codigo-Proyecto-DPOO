@@ -1,6 +1,7 @@
 package Personas;
 
 import Edificios.*;
+import Vehiculos.*;
 
 public class Secretaria extends Usuario {
 
@@ -9,38 +10,34 @@ public class Secretaria extends Usuario {
      * @param nombre
      */
     public void CambiarNombreEmpresa(String nombre) {
-        // TODO - implement Secretaria.CambiarNombreEmpresa
-        throw new UnsupportedOperationException();
+        super.getEmpresaAsignada().setNombre(nombre);
     }
 
-    public void EliminarUsuario() {
+    public void EliminarUsuario(int CI) {
         // TODO - implement Secretaria.EliminarUsuario
         throw new UnsupportedOperationException();
     }
 
-    public void RegistrarVehiculoAlSistema() {
-        // TODO - implement Secretaria.RegistrarVehiculoAlSistema
-        throw new UnsupportedOperationException();
+    public void RegistrarVehiculoAlSistema(Vehiculo nuevo) throws Exception {
+        getEmpresaAsignada().addElement(nuevo);
     }
 
-    public void RegistrarAlmacenAlSistema() {
-        // TODO - implement Secretaria.RegistrarAlmacenAlSistema
-        throw new UnsupportedOperationException();
+    public void RegistrarAlmacenAlSistema(Almacen nuevo) throws Exception {
+                getEmpresaAsignada().addElement(nuevo);
+
     }
 
-    public void registrarSiloAlSistema() {
-        // TODO - implement Secretaria.registrarSiloAlSistema
-        throw new UnsupportedOperationException();
+    public void registrarSiloAlSistema(Silo nuevo, int idAlmacen) throws Exception {
+        getEmpresaAsignada().addElement(nuevo);
     }
 
     /**
      * 
      * @param CI
      */
-    public void GestionarUsuario(int CI) {
-        // TODO - implement Secretaria.GestionarUsuario
-        throw new UnsupportedOperationException();
-    }
+   // public void GestionarUsuario(int CI) {
+     //   Usuario a=getEmpresaAsignada().getUserByCI();
+    //}
 
     /**
      * 
@@ -52,8 +49,7 @@ public class Secretaria extends Usuario {
      * @param contrasenna
      */
     public Secretaria(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
-        // TODO - implement Secretaria.Secretaria
-        throw new UnsupportedOperationException();
+        super( nombre,  apellidos,  CI,  entrada,  empresa, contrasenna);
     }
 
 }

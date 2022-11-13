@@ -3,13 +3,18 @@ package Personas;
 import Edificios.*;
 
 public class Trabajador extends Persona {
+    
+    public Trabajador(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa){
+        super(nombre, apellidos, CI);
+        this.FechaDeEntradaAEmpresa=FechaDeEntrada;
+        this.EmpresaAsignada=Empresa;
+    }
 
     private String FechaDeEntradaAEmpresa;
     private EmpresaAcopio EmpresaAsignada;
 
     public String getFechaDeEntradaAEmpresa() {
-        // TODO - implement Trabajador.getFechaDeEntradaAEmpresa
-        throw new UnsupportedOperationException();
+        return this.FechaDeEntradaAEmpresa;
     }
 
     /**
@@ -17,13 +22,11 @@ public class Trabajador extends Persona {
      * @param FechaDeEntradaAEmpresa
      */
     public void setFechaDeEntradaAEmpresa(String FechaDeEntradaAEmpresa) {
-        // TODO - implement Trabajador.setFechaDeEntradaAEmpresa
-        throw new UnsupportedOperationException();
+        this.FechaDeEntradaAEmpresa=FechaDeEntradaAEmpresa;
     }
 
     public EmpresaAcopio getEmpresaAsignada() {
-        // TODO - implement Trabajador.getEmpresaAsignada
-        throw new UnsupportedOperationException();
+        return this.EmpresaAsignada;
     }
 
     /**
@@ -31,8 +34,7 @@ public class Trabajador extends Persona {
      * @param EmpresaAsignada
      */
     public void setEmpresaAsignada(EmpresaAcopio EmpresaAsignada) {
-        // TODO - implement Trabajador.setEmpresaAsignada
-        throw new UnsupportedOperationException();
+        this.EmpresaAsignada=EmpresaAsignada;
     }
 
 }

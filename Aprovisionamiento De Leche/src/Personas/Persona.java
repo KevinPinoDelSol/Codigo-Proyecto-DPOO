@@ -5,10 +5,15 @@ public class Persona {
     private String Nombre;
     private int CI;
     private String Apellidos;
+    
+    public Persona(String nombre, String apellidos, int CI){
+        this.Nombre=nombre;
+        this.Apellidos=apellidos;
+        this.CI=CI;
+    }
 
     public String getNombre() {
-        // TODO - implement Persona.getNombre
-        throw new UnsupportedOperationException();
+        return this.Nombre;
     }
 
     /**
@@ -16,13 +21,11 @@ public class Persona {
      * @param Nombre
      */
     public void setNombre(String Nombre) {
-        // TODO - implement Persona.setNombre
-        throw new UnsupportedOperationException();
+        this.Nombre=Nombre;
     }
 
     public int getCI() {
-        // TODO - implement Persona.getCI
-        throw new UnsupportedOperationException();
+        return this.CI;
     }
 
     /**
@@ -30,13 +33,11 @@ public class Persona {
      * @param CI
      */
     public void setCI(int CI) {
-        // TODO - implement Persona.setCI
-        throw new UnsupportedOperationException();
+        this.CI=CI;
     }
 
     public String getApellidos() {
-        // TODO - implement Persona.getApellidos
-        throw new UnsupportedOperationException();
+        return this.Apellidos;
     }
 
     /**
@@ -44,8 +45,7 @@ public class Persona {
      * @param Apellidos
      */
     public void setApellidos(String Apellidos) {
-        // TODO - implement Persona.setApellidos
-        throw new UnsupportedOperationException();
+        this.Apellidos=Apellidos;
     }
 
 }
