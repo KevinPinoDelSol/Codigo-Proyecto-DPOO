@@ -4,15 +4,14 @@ import Personas.*;
 
 public class HojaRuta {
 
-    private Ganadero[] ganaderos;
+    private final Ganadero[] ganaderos;
 
     /**
      * 
      * @param ganaderos
      */
     public HojaRuta(Ganadero[] ganaderos) {
-        // TODO - implement HojaRuta.HojaRuta
-        throw new UnsupportedOperationException();
+        this.ganaderos=ganaderos;
     }
 
 }

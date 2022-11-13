@@ -16,6 +16,15 @@ public class EmpresaAcopio {
     private RegistroDeRechazo[] registroRechazo;
     private RegistroDeEntrada[] registroEntrada;
     private Vehiculo[] vehiculos;
+    private Cheque[] cheque;
+
+    public Cheque[] getCheque() {
+        return cheque;
+    }
+
+    public void setCheque(Cheque[] cheque) {
+        this.cheque = cheque;
+    }
 
     public String getNombre() {
         return this.nombre;
@@ -147,7 +156,15 @@ public class EmpresaAcopio {
         // TODO - implement EmpresaAcopio.EmpresaAcopio
         throw new UnsupportedOperationException();
     }
-
+    
+    /**
+     * Annade un elemento a los registros de la Empresa.
+     * 
+     * @param <E>
+     * @param elemento
+     * @throws Exception 
+     * 
+     */
     public <E> void  addElement (E elemento) throws Exception{
         E[] nuevoArreglo;
         E[] viejoArreglo;
@@ -186,6 +203,10 @@ public class EmpresaAcopio {
         else if(elemento instanceof RegistroDeRechazo){
             viejoArreglo=(E[]) this.registroRechazo;
             nuevoArreglo=(E[]) new RegistroDeRechazo[this.registroRechazo.length+1];
+        }
+        else if(elemento instanceof Cheque){
+            viejoArreglo=(E[]) this.cheque;
+            nuevoArreglo=(E[]) new Cheque[this.cheque.length+1];
         }
         else throw new Exception();
         

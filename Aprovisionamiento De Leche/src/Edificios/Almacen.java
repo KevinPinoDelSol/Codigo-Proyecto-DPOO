@@ -10,8 +10,8 @@ public class Almacen {
      * @param id
      */
     public Almacen(int id) {
-        // TODO - implement Almacen.Almacen
-        throw new UnsupportedOperationException();
+        this.id=id;
+        silos=new Silo[0];
     }
 
     public Silo[] getSilos() {
