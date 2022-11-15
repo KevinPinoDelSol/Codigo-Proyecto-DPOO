@@ -3,36 +3,38 @@ package Personas;
 import Edificios.*;
 
 public class Trabajador extends Persona {
+    
+    public Trabajador(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa){
+        super(nombre, apellidos, CI);
+        this.FechaDeEntradaAEmpresa=FechaDeEntrada;
+        this.EmpresaAsignada=Empresa;
+    }
 
-	private String FechaDeEntradaAEmpresa;
-	private EmpresaAcopio EmpresaAsignada;
+    private String FechaDeEntradaAEmpresa;
+    private EmpresaAcopio EmpresaAsignada;
 
-	public String getFechaDeEntradaAEmpresa() {
-		// TODO - implement Trabajador.getFechaDeEntradaAEmpresa
-		throw new UnsupportedOperationException();
-	}
+    public String getFechaDeEntradaAEmpresa() {
+        return this.FechaDeEntradaAEmpresa;
+    }
 
-	/**
-	 * 
-	 * @param FechaDeEntradaAEmpresa
-	 */
-	public void setFechaDeEntradaAEmpresa(String FechaDeEntradaAEmpresa) {
-		// TODO - implement Trabajador.setFechaDeEntradaAEmpresa
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param FechaDeEntradaAEmpresa
+     */
+    public void setFechaDeEntradaAEmpresa(String FechaDeEntradaAEmpresa) {
+        this.FechaDeEntradaAEmpresa=FechaDeEntradaAEmpresa;
+    }
 
-	public EmpresaAcopio getEmpresaAsignada() {
-		// TODO - implement Trabajador.getEmpresaAsignada
-		throw new UnsupportedOperationException();
-	}
+    public EmpresaAcopio getEmpresaAsignada() {
+        return this.EmpresaAsignada;
+    }
 
-	/**
-	 * 
-	 * @param EmpresaAsignada
-	 */
-	public void setEmpresaAsignada(EmpresaAcopio EmpresaAsignada) {
-		// TODO - implement Trabajador.setEmpresaAsignada
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param EmpresaAsignada
+     */
+    public void setEmpresaAsignada(EmpresaAcopio EmpresaAsignada) {
+        this.EmpresaAsignada=EmpresaAsignada;
+    }
 
 }

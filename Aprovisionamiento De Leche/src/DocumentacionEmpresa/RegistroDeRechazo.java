@@ -1,22 +1,22 @@
 package DocumentacionEmpresa;
 
+import Edificios.EmpresaAcopio;
 import Personas.*;
 
 public class RegistroDeRechazo extends RegistroDeMercancia {
 
-	private String RazonDeRechazo;
-
-	/**
-	 * 
-	 * @param fecha
-	 * @param litros
-	 * @param emisor
-	 * @param receptor
-	 * @param razon
-	 */
-	public RegistroDeRechazo(String fecha, String litros, Trabajador emisor, Trabajador receptor, String razon) {
-		// TODO - implement RegistroDeRechazo.RegistroDeRechazo
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param id
+     * @param fecha
+     * @param litros
+     * @param emisor
+     * @param receptor
+     * @param empresa
+     */
+    public RegistroDeRechazo(String id, String fecha, int litros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
+        super(id, fecha, litros, emisor, receptor, empresa);
+        
+    }
 
 }

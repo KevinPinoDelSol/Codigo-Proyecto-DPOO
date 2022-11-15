@@ -2,50 +2,50 @@ package Personas;
 
 public class Persona {
 
-	private String Nombre;
-	private int CI;
-	private String Apellidos;
+    private String Nombre;
+    private int CI;
+    private String Apellidos;
+    
+    public Persona(String nombre, String apellidos, int CI){
+        this.Nombre=nombre;
+        this.Apellidos=apellidos;
+        this.CI=CI;
+    }
 
-	public String getNombre() {
-		// TODO - implement Persona.getNombre
-		throw new UnsupportedOperationException();
-	}
+    public String getNombre() {
+        return this.Nombre;
+    }
 
-	/**
-	 * 
-	 * @param Nombre
-	 */
-	public void setNombre(String Nombre) {
-		// TODO - implement Persona.setNombre
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param Nombre
+     */
+    public void setNombre(String Nombre) {
+        this.Nombre=Nombre;
+    }
 
-	public int getCI() {
-		// TODO - implement Persona.getCI
-		throw new UnsupportedOperationException();
-	}
+    public int getCI() {
+        return this.CI;
+    }
 
-	/**
-	 * 
-	 * @param CI
-	 */
-	public void setCI(int CI) {
-		// TODO - implement Persona.setCI
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param CI
+     */
+    public void setCI(int CI) {
+        this.CI=CI;
+    }
 
-	public String getApellidos() {
-		// TODO - implement Persona.getApellidos
-		throw new UnsupportedOperationException();
-	}
+    public String getApellidos() {
+        return this.Apellidos;
+    }
 
-	/**
-	 * 
-	 * @param Apellidos
-	 */
-	public void setApellidos(String Apellidos) {
-		// TODO - implement Persona.setApellidos
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param Apellidos
+     */
+    public void setApellidos(String Apellidos) {
+        this.Apellidos=Apellidos;
+    }
 
 }

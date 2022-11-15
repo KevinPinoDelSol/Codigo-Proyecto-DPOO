@@ -1,22 +1,33 @@
 package DocumentacionEmpresa;
 
+import Edificios.EmpresaAcopio;
 import Personas.*;
 
 public class RegistroDeEntrada extends RegistroDeMercancia {
 
-	private String Calidad;
+    private boolean pagado;
 
-	/**
-	 * 
-	 * @param fecha
-	 * @param litros
-	 * @param emisor
-	 * @param receptor
-	 * @param calidad
-	 */
-	public RegistroDeEntrada(String fecha, int litros, Trabajador emisor, Trabajador receptor, String calidad) {
-		// TODO - implement RegistroDeEntrada.RegistroDeEntrada
-		throw new UnsupportedOperationException();
-	}
+    public boolean isPagado() {
+        return pagado;
+    }
+
+    public void setPagado(boolean pagado) {
+        this.pagado = pagado;
+    }
+
+    /**
+     * 
+     * @param id
+     * @param fecha
+     * @param litros
+     * @param emisor
+     * @param receptor
+     * @param calidad
+     * @param empresa
+     */
+    public RegistroDeEntrada(String id, String fecha, int litros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
+        super(id, fecha, litros, emisor, receptor, empresa);
+        this.pagado=false;
+    }
 
 }

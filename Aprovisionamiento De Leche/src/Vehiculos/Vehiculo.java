@@ -2,6 +2,6 @@ package Vehiculos;
 
 public class Vehiculo {
 
-	private int id;
+    private int id;
 
 }

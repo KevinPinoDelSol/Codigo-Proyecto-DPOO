@@ -1,11 +1,13 @@
 package Interfaces;
 
+import Excepciones.EspacioInsuficienteEnElCamionExcepcion;
+
 public interface RecepcionDeLeche {
 
-	void ControlDeCalidad();
+    public void ControlDeCalidad(boolean calidad,int litros) throws EspacioInsuficienteEnElCamionExcepcion;
 
-	void RechazarLeche();
+    void RechazarLeche(int litros);
 
-	void RecibirLeche();
+    void RecibirLeche(int litros);
 
 }
