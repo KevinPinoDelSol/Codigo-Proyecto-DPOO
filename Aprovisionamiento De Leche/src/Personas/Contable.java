@@ -2,6 +2,9 @@ package Personas;
 
 import DocumentacionEmpresa.*;
 import Edificios.*;
+import Excepciones.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Contable extends Usuario {
 
@@ -15,9 +18,13 @@ public class Contable extends Usuario {
      * Si ya el registro se pago pero el metodo fue llamado.
      */
     public void PagarGanadero(RegistroDeEntrada registroEntrada, double precioUnitario) throws RegistroDeEntradaYaPagadoExcepcion {
-        if(registroEntrada.isPagado()==false)throw new RegistroDeEntradaYaPagadoExcepcion();
-        Cheque nuevoCheque=new Cheque(registroEntrada, precioUnitario);
-        this.getEmpresaAsignada().addElement(nuevoCheque);
+        try {
+            if(registroEntrada.isPagado()==false)throw new RegistroDeEntradaYaPagadoExcepcion();
+            Cheque nuevoCheque=new Cheque(registroEntrada, precioUnitario);
+            this.getEmpresaAsignada().addElement(nuevoCheque);
+        } catch (Exception ex) {
+            Logger.getLogger(Contable.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

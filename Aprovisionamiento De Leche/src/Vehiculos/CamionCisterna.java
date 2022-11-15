@@ -5,6 +5,22 @@ import Interfaces.*;
 public class CamionCisterna extends Vehiculo implements AlmacenamientoDeLeche {
 
     private int CapacidadMaximaLitros;
+
+    public int getCapacidadMaximaLitros() {
+        return CapacidadMaximaLitros;
+    }
+
+    public void setCapacidadMaximaLitros(int CapacidadMaximaLitros) {
+        this.CapacidadMaximaLitros = CapacidadMaximaLitros;
+    }
+
+    public int getContenidoActualLitros() {
+        return ContenidoActualLitros;
+    }
+
+    public void setContenidoActualLitros(int ContenidoActualLitros) {
+        this.ContenidoActualLitros = ContenidoActualLitros;
+    }
     private int ContenidoActualLitros;
 
     /**
@@ -14,18 +30,17 @@ public class CamionCisterna extends Vehiculo implements AlmacenamientoDeLeche {
      * @param contenidoInicial
      */
     public CamionCisterna(int id, int capacidad, int contenidoInicial) {
-        // TODO - implement CamionCisterna.CamionCisterna
+ 
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void CargarLeche(int litros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ContenidoActualLitros+=litros;
 }
 
     @Override
     public void DescargarLeche(int litros) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

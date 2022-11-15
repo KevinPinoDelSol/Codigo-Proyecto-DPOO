@@ -4,7 +4,7 @@ import Edificios.EmpresaAcopio;
 import Personas.*;
 
 public class RegistroDeMercancia {
-    protected int id;
+    protected String id;
 
     protected String fecha;
     protected int cantidadLitros;
@@ -12,7 +12,7 @@ public class RegistroDeMercancia {
     protected Trabajador receptor;
     protected EmpresaAcopio empresa;
 
-    public RegistroDeMercancia(int id, String fecha, int cantidadLitros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
+    public RegistroDeMercancia(String id, String fecha, int cantidadLitros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
         this. id=id;
         this.fecha = fecha;
         this.cantidadLitros = cantidadLitros;
@@ -20,7 +20,7 @@ public class RegistroDeMercancia {
         this.receptor = receptor;
         this.empresa = empresa;
     }
-    public int getId() {
+    public String getId() {
         return id;
     }
 

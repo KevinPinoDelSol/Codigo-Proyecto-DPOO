@@ -8,6 +8,10 @@ public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
 
     private Silo[] silosAsignados;
 
+    public AdministradorAcopio(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa, String contrasenna) {
+        super(nombre, apellidos, CI, FechaDeEntrada, Empresa, contrasenna);
+    }
+
     /**
      * 
      * @param nombre
@@ -35,18 +39,23 @@ public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
     }
 
     @Override
-    public void ControlDeCalidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-}
-
-    @Override
-    public void RechazarLeche() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ControlDeCalidad(boolean calidad,int litros) {
+        if (calidad) {
+            RecibirLeche(litros);
+        }
+        else{
+            RechazarLeche(litros);
+        }
     }
 
     @Override
-    public void RecibirLeche() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void RechazarLeche(int litros) {
+        
+        
+    }
+
+    @Override
+    public void RecibirLeche(int litros) {
     }
 
 }

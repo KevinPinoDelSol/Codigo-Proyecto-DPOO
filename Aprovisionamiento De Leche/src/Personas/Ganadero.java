@@ -14,9 +14,9 @@ public class Ganadero extends Trabajador {
      * @param entrada
      * @param empresa
      */
-    public Ganadero(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa) {
-        // TODO - implement Ganadero.Ganadero
-        throw new UnsupportedOperationException();
+    public Ganadero(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa,String direccionFinca) {
+        super(nombre,apellidos,CI,entrada,empresa);
+        this.DireccionFinca=direccionFinca;
     }
 
 }

@@ -5,16 +5,7 @@ import Personas.*;
 
 public class RegistroDeEntrada extends RegistroDeMercancia {
 
-    private String Calidad;
     private boolean pagado;
-
-    public String getCalidad() {
-        return Calidad;
-    }
-
-    public void setCalidad(String Calidad) {
-        this.Calidad = Calidad;
-    }
 
     public boolean isPagado() {
         return pagado;
@@ -34,9 +25,8 @@ public class RegistroDeEntrada extends RegistroDeMercancia {
      * @param calidad
      * @param empresa
      */
-    public RegistroDeEntrada(int id, String fecha, int litros, Trabajador emisor, Trabajador receptor, String calidad, EmpresaAcopio empresa) {
+    public RegistroDeEntrada(String id, String fecha, int litros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
         super(id, fecha, litros, emisor, receptor, empresa);
-        this.Calidad=calidad;
         this.pagado=false;
     }
 

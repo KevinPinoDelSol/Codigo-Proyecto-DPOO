@@ -5,16 +5,6 @@ import Personas.*;
 
 public class RegistroDeRechazo extends RegistroDeMercancia {
 
-    private String RazonDeRechazo;
-
-    public String getRazonDeRechazo() {
-        return RazonDeRechazo;
-    }
-
-    public void setRazonDeRechazo(String RazonDeRechazo) {
-        this.RazonDeRechazo = RazonDeRechazo;
-    }
-
     /**
      * 
      * @param id
@@ -22,12 +12,11 @@ public class RegistroDeRechazo extends RegistroDeMercancia {
      * @param litros
      * @param emisor
      * @param receptor
-     * @param razon
      * @param empresa
      */
-    public RegistroDeRechazo(int id, String fecha, int litros, Trabajador emisor, Trabajador receptor, String razon, EmpresaAcopio empresa) {
+    public RegistroDeRechazo(String id, String fecha, int litros, Trabajador emisor, Trabajador receptor, EmpresaAcopio empresa) {
         super(id, fecha, litros, emisor, receptor, empresa);
-        this.RazonDeRechazo=razon;
+        
     }
 
 }
