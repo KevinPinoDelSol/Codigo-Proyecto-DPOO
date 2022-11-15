@@ -66,7 +66,7 @@ public class Transportista extends Usuario implements RecepcionDeLeche {
     public void RecibirLeche(int litros) {
         this.RutaAsignada.setGanaderosVisitados(this.RutaAsignada.getGanaderoActual());
         ((CamionCisterna)VehiculoAsignado).CargarLeche(litros);
-        RegistroDeEntrada nuevoRegistro=new RegistroDeEntrada(null, null, litros, RutaAsignada.getGanaderoInPos(RutaAsignada.getGanaderoActual()), this, this.getEmpresaAsignada());
+        RegistroDeEntrada nuevoRegistro=new RegistroDeEntrada(null, null, litros, (Trabajador)RutaAsignada.getGanaderoInPos(RutaAsignada.getGanaderoActual()),(Trabajador) this, this.getEmpresaAsignada());
         try {
             this.getEmpresaAsignada().addElement(nuevoRegistro);
         } catch (Exception ex) {
