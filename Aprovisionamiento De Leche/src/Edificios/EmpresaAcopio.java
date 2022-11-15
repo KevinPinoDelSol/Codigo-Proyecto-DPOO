@@ -2,6 +2,7 @@ package Edificios;
 
 import Personas.*;
 import DocumentacionEmpresa.*;
+import Excepciones.UsuarioNoEncontradoExcepcion;
 import Vehiculos.*;
 
 public class EmpresaAcopio {
@@ -214,4 +215,10 @@ public class EmpresaAcopio {
         nuevoArreglo[nuevoArreglo.length-1]=elemento;
         
     }
+
+    public Usuario getUserByCI(int CI)throws UsuarioNoEncontradoExcepcion {
+        Usuario usuario=this.administradores[0];
+        return usuario;
+    }
+
 }

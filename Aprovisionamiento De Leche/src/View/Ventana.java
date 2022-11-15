@@ -6,8 +6,9 @@
 package View;
 
 import Edificios.EmpresaAcopio;
-import Modem.FileWorking;
+import Modem.Fichero;
 import Personas.*;
+import sun.rmi.runtime.Log;
 
 /**
  *
@@ -34,22 +35,25 @@ public final class Ventana extends javax.swing.JFrame {
      * Crea la ventana Principal de la GUI
      */
     public Ventana() {
+
+        //setBounds(5, 5, 300, 500);
         initComponents();
-        this.empresa=FileWorking.loadEmpresa();
+//        this.empresa=Fichero.loadEmpresa();
         
-        if(getEmpresa()==null){
-            this.setTitle("Nueva Empresa.");
-            setVisualNuevaEmpresa();
-        } else {
-            this.setTitle(this.getEmpresa().getNombre());
+//        if(getEmpresa()==null){
+//            this.setTitle("Nueva Empresa.");
+//            setVisualNuevaEmpresa();
+//       } else {
+//            this.setTitle(this.getEmpresa().getNombre());
             setVisualLogIn();
-        }
+//        }
         
         
     }
     
     public void setVisualLogIn(){
-            jPanel1=new LogIn(this);
+        remove(jPanel1);
+        add(new LogIn(this));
     }
     public void setVisualSecretaria(){
         
@@ -84,17 +88,8 @@ public final class Ventana extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 486, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
+        getContentPane().setLayout(new java.awt.FlowLayout());
+        getContentPane().add(jPanel1);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -103,22 +98,6 @@ public final class Ventana extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
