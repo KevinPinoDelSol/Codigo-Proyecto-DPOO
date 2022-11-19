@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 
 public class Contable extends Usuario {
 
+    public Contable() {
+    }
+
     /**
      *Realiza la emision de un Cheque a un Registro de entrada.
      * @param registroEntrada

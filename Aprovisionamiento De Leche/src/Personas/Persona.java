@@ -6,6 +6,7 @@ public class Persona {
     private int CI;
     private String Apellidos;
     
+    public Persona(){}
     public Persona(String nombre, String apellidos, int CI){
         this.Nombre=nombre;
         this.Apellidos=apellidos;

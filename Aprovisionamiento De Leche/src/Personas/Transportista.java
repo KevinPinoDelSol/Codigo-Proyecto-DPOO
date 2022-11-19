@@ -30,6 +30,9 @@ public class Transportista extends Usuario implements RecepcionDeLeche {
         
     }
 
+    public Transportista() {
+    }
+
     public void estadotransportita(int pos){
       this.RutaAsignada.setGanaderoActual(pos);
     }
@@ -73,5 +76,5 @@ public class Transportista extends Usuario implements RecepcionDeLeche {
             Logger.getLogger(Transportista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
 }

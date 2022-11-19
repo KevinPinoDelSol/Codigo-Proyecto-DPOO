@@ -4,6 +4,8 @@ import Edificios.*;
 
 public class Trabajador extends Persona {
     
+    public Trabajador(){}
+    
     public Trabajador(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa){
         super(nombre, apellidos, CI);
         this.FechaDeEntradaAEmpresa=FechaDeEntrada;

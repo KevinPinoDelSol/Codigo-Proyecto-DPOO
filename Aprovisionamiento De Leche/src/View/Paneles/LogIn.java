@@ -3,27 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package View.Paneles;
 
 import Excepciones.*;
 import Personas.AdministradorAcopio;
 import Personas.Contable;
 import Personas.Secretaria;
 import Personas.Usuario;
+import View.VentanaNotificacion;
+import View.VentanaPrincipal;
 
 /**
  *
  * @author Kevin
  */
 public class LogIn extends javax.swing.JPanel {
- public Ventana parent;
+ public VentanaPrincipal parent;
     /**
      * Creates new form LogIn
      * @param parent Es el Frame de tipo ventana en el que se encuentra el Panel, sirve de puntero para los eventos.
      */
-    public LogIn(Ventana parent) {
+    public LogIn(VentanaPrincipal parent) {
         this.parent=parent;
         initComponents();
+    }
+
+    LogIn() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

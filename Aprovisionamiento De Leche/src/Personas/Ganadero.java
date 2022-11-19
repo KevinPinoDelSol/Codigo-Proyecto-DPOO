@@ -19,4 +19,15 @@ public class Ganadero extends Trabajador {
         this.DireccionFinca=direccionFinca;
     }
 
+    public Ganadero() {
+    }
+
+    public String getDireccionFinca() {
+        return DireccionFinca;
+    }
+
+    public void setDireccionFinca(String DireccionFinca) {
+        this.DireccionFinca = DireccionFinca;
+    }
+
 }

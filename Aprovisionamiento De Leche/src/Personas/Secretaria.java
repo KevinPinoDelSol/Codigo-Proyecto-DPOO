@@ -5,6 +5,8 @@ import Vehiculos.*;
 
 public class Secretaria extends Usuario {
 
+    public Secretaria() {}
+
     /**
      * 
      * @param nombre

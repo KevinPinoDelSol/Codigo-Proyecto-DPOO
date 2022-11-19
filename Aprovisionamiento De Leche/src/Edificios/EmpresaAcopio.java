@@ -1,5 +1,6 @@
 package Edificios;
 
+import Excepciones.TrabajadorNoEncontrado;
 import Personas.*;
 import DocumentacionEmpresa.*;
 import Excepciones.UsuarioNoEncontradoExcepcion;
@@ -153,9 +154,19 @@ public class EmpresaAcopio {
      * @param nombre
      * @param secretaria
      */
-    public EmpresaAcopio(String nombre, Secretaria secretaria) {
-        // TODO - implement EmpresaAcopio.EmpresaAcopio
-        throw new UnsupportedOperationException();
+    public EmpresaAcopio(String nombre) {
+        this.nombre=nombre;
+        this.administradores=new AdministradorAcopio[0];
+        this.secretarias=new Secretaria[0];
+        this.transportistas=new Transportista[0];
+        this.contables=new Contable[0];
+        this.ganaderos=new Ganadero[0];
+        
+        this.registroEntrada=new RegistroDeEntrada[0];
+        this.registroRechazo=new RegistroDeRechazo[0];
+        this.cheque=new Cheque[0];
+        
+        this.vehiculos=new Vehiculo[0];
     }
     
     /**
@@ -217,8 +228,31 @@ public class EmpresaAcopio {
     }
 
     public Usuario getUserByCI(int CI)throws UsuarioNoEncontradoExcepcion {
-        Usuario usuario=this.administradores[0];
-        return usuario;
+        throw new UnsupportedOperationException();
     }
 
+    public void deleteTransportista(int CI) throws TrabajadorNoEncontrado{
+        
+        int posicion=-1;
+        boolean inexistente=true;
+        for(int i=0; i<this.transportistas.length && inexistente;i++){
+            if(transportistas[i].getCI()==CI){
+                posicion=i;
+                inexistente=false;
+            }
+        }
+        
+        if(inexistente)  throw new TrabajadorNoEncontrado();
+        else{
+            Transportista[] nuevoArreglo=new Transportista[this.transportistas.length-1];
+            
+            for(int i=0; i<nuevoArreglo.length; i++){
+                if(i<posicion) nuevoArreglo[i]=this.transportistas[i];
+                else               nuevoArreglo[i]=this.transportistas[i+1];
+            }
+            this.transportistas=nuevoArreglo;
+            
+        }
+    }
+    
 }
