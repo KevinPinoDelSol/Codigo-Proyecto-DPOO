@@ -11,7 +11,11 @@ import Edificios.EmpresaAcopio;
 import Model.Fichero;
 import Personas.*;
 import Personas.Usuario;
-import View.Paneles.FormularioPrincipal;
+import View.BarrasDeMenu.BarraSecretaria;
+import View.Paneles.NuevoTrabajador;
+import View.Paneles.PanelInicio;
+import View.Paneles.Tabla;
+import View.Paneles.panelTabla;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -25,15 +29,15 @@ import javax.swing.*;
  * @author Kevin
  */
 public class VentanaPrincipal extends JFrame{
-        private Usuario usuario;
+        public   Usuario usuario;
         public   EmpresaAcopio empresa;
         private JPanel panelActual;
-        private JPanel panelinferior;
+        private JPanel panelTemporal;
         private JMenuBar barraMenu;
     /**
      * Crea la ventana Principal de la GUI
      */
-        public VentanaPrincipal(JPanel panelActual){
+        /*public VentanaPrincipal(JPanel panelActual){
             this.panelActual.setLayout(null);
             this.setLayout(null);
             remove(this.panelActual);
@@ -41,8 +45,8 @@ public class VentanaPrincipal extends JFrame{
             System.out.println("constructor");
             this.panelActual=panelActual;
             this.add(panelActual);
-            
-        }
+        }*/
+
     public VentanaPrincipal() {
         
         setBounds(5, 5, 640, 480);
@@ -65,6 +69,9 @@ public class VentanaPrincipal extends JFrame{
     }
         private void actualizar(){
             remove(panelActual);
+            try{remove(panelTemporal);
+                System.out.println("Panel actualizado");}
+            catch(Exception e){}
             this.setBounds((int)this.getX(),(int) this.getY(), this.getWidth()+1, this.getHeight());
             this.setBounds((int)this.getX(),(int) this.getY(), this.getWidth()-1, this.getHeight());
         }
@@ -83,13 +90,18 @@ public class VentanaPrincipal extends JFrame{
     }
     
     
+    
     public void setVisualLogIn(){
         actualizar();
         panelActual = new LogIn(this);
+        panelActual.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.add(panelActual);
     }
     public void setVisualSecretaria(){
-        
+        setJMenuBar(new BarraSecretaria(this));
+        panelActual.setBounds(0, 30, this.getWidth(), this.getHeight()-30);
+        setVisualInicio();
+        add(panelActual);
     }
     public void setVisualContable(){
         
@@ -105,10 +117,25 @@ public class VentanaPrincipal extends JFrame{
         panelActual.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.add(panelActual);
     }
-    
+    public void setVisualInicio(){        
+        actualizar();
+        panelActual=new PanelInicio(this);
+        add(panelActual);
+    }
     public void setVisualNuevoTrabajador(boolean DebeIniciarSesion, boolean rolCambiable, Trabajador trabajador){
         actualizar();
-        panelActual=new FormularioPrincipal(this, true, false, new Secretaria());
+        NuevoTrabajador panelTemporal=new NuevoTrabajador(this, true, false, new Secretaria());
+        this.panelTemporal=new NuevoTrabajador(this, DebeIniciarSesion, rolCambiable, trabajador);
+        this.panelTemporal.setBounds(0, 0, this.getWidth(), this.getHeight());
+        add(this.panelTemporal);
+        if(trabajador==null) System.out.println("Nuevo Trabajador");
+        else                         System.out.println("Modificando trabajador");
+        
+    }
+    public void setVisualTabla(Object[] objetosRepresentados){
+        actualizar();
+        this.panelActual= new panelTabla(this, objetosRepresentados, "Secretaria");
+        //this.panelActual=new Tabla(this, objetosRepresentados);
         add(panelActual);
     }
     
@@ -122,6 +149,11 @@ public class VentanaPrincipal extends JFrame{
                 new VentanaPrincipal().setVisible(true);
             }
         });
+    }
+
+    public void setVisualAnterior() {
+        actualizar();
+        add(panelActual);
     }
     
 }

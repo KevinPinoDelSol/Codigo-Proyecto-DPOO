@@ -7,7 +7,7 @@ package View.Paneles;
 
 import Edificios.EmpresaAcopio;
 import Personas.Secretaria;
-import View.Paneles.FormularioPrincipal;
+import View.Paneles.NuevoTrabajador;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
 

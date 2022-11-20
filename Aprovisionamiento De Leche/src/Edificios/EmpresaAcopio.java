@@ -5,6 +5,7 @@ import Personas.*;
 import DocumentacionEmpresa.*;
 import Excepciones.UsuarioNoEncontradoExcepcion;
 import Vehiculos.*;
+import java.util.ArrayList;
 
 public class EmpresaAcopio {
 
@@ -19,6 +20,7 @@ public class EmpresaAcopio {
     private RegistroDeEntrada[] registroEntrada;
     private Vehiculo[] vehiculos;
     private Cheque[] cheque;
+    private ArrayList<Trabajador> trabajadores;
 
     public Cheque[] getCheque() {
         return cheque;
@@ -161,6 +163,7 @@ public class EmpresaAcopio {
         this.transportistas=new Transportista[0];
         this.contables=new Contable[0];
         this.ganaderos=new Ganadero[0];
+        this.trabajadores=new ArrayList<>();
         
         this.registroEntrada=new RegistroDeEntrada[0];
         this.registroRechazo=new RegistroDeRechazo[0];
@@ -181,6 +184,7 @@ public class EmpresaAcopio {
         E[] nuevoArreglo;
         E[] viejoArreglo;
         if(elemento instanceof Secretaria){
+            System.out.print("Intento de añadir secretaria ");
             viejoArreglo=(E[]) this.secretarias;
             nuevoArreglo=(E[]) new Secretaria[this.secretarias.length+1];
 }
@@ -254,5 +258,24 @@ public class EmpresaAcopio {
             
         }
     }
+
+    public Trabajador[] getTrabajadores() {
+        Trabajador[] todos =new Trabajador[trabajadores.size()];
+        
+        for(int i=0; i<trabajadores.size(); i++){
+            todos[i]=trabajadores.get(i);
+        }
+        
+        return todos;
+    }
+
+    public void setTrabajadores(ArrayList<Trabajador> trabajadores) {
+        this.trabajadores = trabajadores;
+    }
+
     
+    
+    public void addTrabajador(Trabajador trabajador){
+        trabajadores.add(trabajador);
+    }
 }

@@ -9,6 +9,8 @@ import Personas.*;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
 import java.awt.BorderLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -17,14 +19,14 @@ import javax.swing.JTextField;
  *
  * @author Kevin
  */
-public class FormularioPrincipal extends javax.swing.JPanel {
+public class NuevoTrabajador extends javax.swing.JPanel {
     VentanaPrincipal parent;
     Trabajador trabajadorNuevo;
     Trabajador trabajadorViejo;
     /**
      * Creates new form FormularioPrincipal
      */
-    public FormularioPrincipal(VentanaPrincipal parent,boolean DebeIniciarSesion, boolean rolCambiable, Trabajador trabajador) {
+    public NuevoTrabajador(VentanaPrincipal parent,boolean DebeIniciarSesion, boolean rolCambiable, Trabajador trabajador) {
         this.parent = parent;
         trabajadorViejo=trabajador;
         
@@ -36,6 +38,7 @@ public class FormularioPrincipal extends javax.swing.JPanel {
         if(DebeIniciarSesion){
             jRadioButton1.setSelected(true);
             jRadioButton1.setVisible(false);
+            jButton2.setVisible(false);
         }
             
         try{
@@ -48,7 +51,7 @@ public class FormularioPrincipal extends javax.swing.JPanel {
             jTextField3.setText("");
         }
         
-        
+        trabajadorNuevo=new Secretaria();
     }
     
 
@@ -75,6 +78,7 @@ public class FormularioPrincipal extends javax.swing.JPanel {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
@@ -114,20 +118,32 @@ public class FormularioPrincipal extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 153, 153));
+        jButton2.setText("Cancelar X");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(134, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -256,13 +272,31 @@ public class FormularioPrincipal extends javax.swing.JPanel {
             if(trabajadorNuevo instanceof Ganadero){
                 ((Ganadero)trabajadorNuevo).setDireccionFinca(((PanelPersonalizado)jPanel2).texto.getText());
             }
-            
+            if(trabajadorViejo==null){
+                try {
+                    parent.empresa.addTrabajador(trabajadorNuevo);
+                } catch (Exception ex) {
+                    Logger.getLogger(NuevoTrabajador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
             trabajadorViejo=trabajadorNuevo;
+            }
+            
+            System.out.println(jRadioButton1.isSelected());
                 if(jRadioButton1.isSelected()){
+                    parent.usuario=(Usuario)trabajadorNuevo;
                     String seleccionado=(String)jComboBox1.getSelectedItem();
                      if(seleccionado.equals("Secretaria")){
+                         parent.setVisualSecretaria();
                      } else if(seleccionado.equals("Contable")){
+                         parent.setVisualContable();
+                     } else if(seleccionado.equals("Transportista")){
+                         parent.setVisualTransportista();
+                     } else if(seleccionado.equals("Administrador")){
+                         parent.setVisualAdministrador();
                      }
+                } else{
+                    parent.setVisualAnterior();
                 }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -273,6 +307,11 @@ public class FormularioPrincipal extends javax.swing.JPanel {
             jLabel5.setVisible(false);
             jPanel2.setVisible(false);
             trabajadorNuevo=new Secretaria();
+            jRadioButton1.setEnabled(true);
+        } else if(seleccionado.equals("Administrador")){
+             jLabel5.setVisible(false);
+            jPanel2.setVisible(false);
+            trabajadorNuevo=new AdministradorAcopio();
             jRadioButton1.setEnabled(true);
         } else if(seleccionado.equals("Contable")){
             jLabel5.setVisible(false);
@@ -306,6 +345,10 @@ public class FormularioPrincipal extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        parent.setVisualAnterior();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
         private class PanelPersonalizado extends JPanel{
             public JComboBox <Object> combo;
             public JTextField texto;
@@ -314,6 +357,7 @@ public class FormularioPrincipal extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
