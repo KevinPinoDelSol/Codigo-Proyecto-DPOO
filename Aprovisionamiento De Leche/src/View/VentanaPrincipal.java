@@ -13,6 +13,7 @@ import Personas.*;
 import Personas.Usuario;
 import View.BarrasDeMenu.BarraSecretaria;
 import View.Paneles.NuevoTrabajador;
+import View.Paneles.NuevoVehiculo;
 import View.Paneles.PanelInicio;
 import View.Paneles.Tabla;
 import View.Paneles.panelTabla;
@@ -53,11 +54,11 @@ public class VentanaPrincipal extends JFrame{
         try {
             this.empresa=Fichero.loadEmpresa();
         } catch (IOException ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("La base de datos no fue encontrada.");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if(empresa == null || empresa.getSecretarias().length==0){
+        if(empresa == null || empresa.getTrabajadoresPorTipo(Secretaria.class).length==0){
             this.setTitle("Nueva Empresa.");
             setVisualNuevaEmpresa();
        } else {
@@ -96,6 +97,8 @@ public class VentanaPrincipal extends JFrame{
         panelActual = new LogIn(this);
         panelActual.setBounds(0, 0, this.getWidth(), this.getHeight());
         this.add(panelActual);
+        
+        setJMenuBar(new JMenuBar());
     }
     public void setVisualSecretaria(){
         setJMenuBar(new BarraSecretaria(this));
@@ -132,9 +135,9 @@ public class VentanaPrincipal extends JFrame{
         else                         System.out.println("Modificando trabajador");
         
     }
-    public void setVisualTabla(Object[] objetosRepresentados){
+    public void setVisualTabla(Object[] objetosRepresentados, String tipo){
         actualizar();
-        this.panelActual= new panelTabla(this, objetosRepresentados, "Secretaria");
+        this.panelActual= new panelTabla(this, objetosRepresentados, tipo);
         //this.panelActual=new Tabla(this, objetosRepresentados);
         add(panelActual);
     }
@@ -154,6 +157,12 @@ public class VentanaPrincipal extends JFrame{
     public void setVisualAnterior() {
         actualizar();
         add(panelActual);
+    }
+
+    public void setVisualNuevoVehiculo() {
+        actualizar();
+        this.panelTemporal=new NuevoVehiculo(this);
+        add(panelTemporal);
     }
     
 }

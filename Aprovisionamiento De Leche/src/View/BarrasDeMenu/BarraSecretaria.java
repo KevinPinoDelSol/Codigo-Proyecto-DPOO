@@ -27,7 +27,7 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
         inicio =new JMenuItem("Inicio");
         inicio.addActionListener(this);
         usuarios=new MenuUsuarios("Usuarios", parent);
-        vehiculos=new JMenu("Vehiculos");
+        vehiculos=new MenuVehiculos(parent);
         
         add(inicio);
         add(usuarios);
@@ -88,13 +88,56 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
             JMenuItem menuPulsado=(JMenuItem)e.getSource();
             
             if(menuPulsado==tablaTodos) {
-                parent.setVisualTabla(parent.empresa.getTrabajadores());
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Trabajador.class), "Trabajador");
+            } else if(menuPulsado==tablaSecretarias){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Secretaria.class), "Secretaria");
+            } else if(menuPulsado==tablaUsuarios){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Usuario.class), "Usuario");
             } else if(menuPulsado==Crear){
                 parent.setVisualNuevoTrabajador(false, true, null);
+            }else if(menuPulsado==tablaAdministradores){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(AdministradorAcopio.class),"Administrador");
+            }else if(menuPulsado==tablaContables){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Contable.class), "Contable");
+            }else if(menuPulsado==tablaGanaderos){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Ganadero.class),"Ganadero");
+            }else if(menuPulsado==tablaTransportistas){
+                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Transportista.class), "Transportista");
+                
             }
+        }
+    }
+    private static class MenuVehiculos extends JMenu implements ActionListener{
+        VentanaPrincipal parent;
+
+        JMenuItem tablaTodos=new JMenuItem("Todos");
+        JMenuItem tablaCamionesCisterna=new JMenuItem("Camiones Cisterna");
+        JMenuItem Crear=new JMenuItem("Crear");
+        
+        public MenuVehiculos(VentanaPrincipal parent){
+            super("Vehiculos");
+            this.parent=parent;
             
+            add(tablaTodos);
+            add(Crear);
+     //                        add(tablaCamionesCisterna);
+            
+            tablaTodos.addActionListener(this);
+            tablaCamionesCisterna.addActionListener(this);
+            Crear.addActionListener(this);
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JMenuItem pulsado=(JMenuItem)e.getSource();
+            
+            if(pulsado==tablaTodos){
+                parent.setVisualTabla(parent.empresa.getVehiculos(),"Vehiculo");
+            } else if(pulsado==tablaCamionesCisterna){
+                parent.setVisualTabla(parent.empresa.getCamionesCisterna(), "CamionCisterna");
+            } else if(pulsado==Crear){
+                parent.setVisualNuevoVehiculo();
+            }
             
         }
     }
-    
 }

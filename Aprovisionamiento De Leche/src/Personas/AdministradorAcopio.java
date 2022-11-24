@@ -2,6 +2,7 @@ package Personas;
 
 import Edificios.*;
 import Interfaces.*;
+import java.util.Date;
 
 
 public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
@@ -15,7 +16,7 @@ public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
      * @param apellidos
      * @param contrasenna
      */
-    public AdministradorAcopio(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa, String contrasenna) {
+    public AdministradorAcopio(String nombre, String apellidos, long CI, Date FechaDeEntrada, EmpresaAcopio Empresa, String contrasenna) {
         super(nombre, apellidos, CI, FechaDeEntrada, Empresa, contrasenna);
     }
 

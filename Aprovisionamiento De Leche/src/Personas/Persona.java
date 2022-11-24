@@ -3,11 +3,11 @@ package Personas;
 public class Persona {
 
     private String Nombre;
-    private int CI;
+    private long CI;
     private String Apellidos;
     
     public Persona(){}
-    public Persona(String nombre, String apellidos, int CI){
+    public Persona(String nombre, String apellidos, long CI){
         this.Nombre=nombre;
         this.Apellidos=apellidos;
         this.CI=CI;
@@ -25,7 +25,7 @@ public class Persona {
         this.Nombre=Nombre;
     }
 
-    public int getCI() {
+    public long getCI() {
         return this.CI;
     }
 
@@ -33,7 +33,7 @@ public class Persona {
      * 
      * @param CI
      */
-    public void setCI(int CI) {
+    public void setCI(long CI) {
         this.CI=CI;
     }
 

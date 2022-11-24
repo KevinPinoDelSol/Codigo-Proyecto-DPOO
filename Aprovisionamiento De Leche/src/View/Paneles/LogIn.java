@@ -12,6 +12,8 @@ import Personas.Secretaria;
 import Personas.Usuario;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -106,7 +108,7 @@ public class LogIn extends javax.swing.JPanel {
                 throw new CampoDeTextoVacioExcepcion();
             }
             int CI=Integer.valueOf(jTextField1.getText());
-            Usuario usuarioActual = this.parent.getEmpresa().getUserByCI(CI);
+            Usuario usuarioActual =(Usuario)this.parent.getEmpresa().getTrabajadorByCI(CI);
         
             if(usuarioActual.getContrasenna().equals(jTextField2.getText())){
                 this.parent.setUsuario(usuarioActual);
@@ -120,7 +122,7 @@ public class LogIn extends javax.swing.JPanel {
             else parent.setVisualTransportista();
             
         } catch (CampoDeTextoVacioExcepcion
-                | UsuarioNoEncontradoExcepcion
+                | TrabajadorNoEncontradoExcepcion
                 | ContrasennaIncorectaExcepcion ex) {
             VentanaNotificacion notificacion=new VentanaNotificacion(parent, ex.getMessage());
         } catch(NullPointerException e){

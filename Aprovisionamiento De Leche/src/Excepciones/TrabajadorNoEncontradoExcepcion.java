@@ -9,9 +9,9 @@ package Excepciones;
  *
  * @author Kevin
  */
-public class TrabajadorNoEncontrado extends Exception {
+public class TrabajadorNoEncontradoExcepcion extends Exception {
 
-    public TrabajadorNoEncontrado() {
+    public TrabajadorNoEncontradoExcepcion() {
         super("No existe este trabajador");
     }
     

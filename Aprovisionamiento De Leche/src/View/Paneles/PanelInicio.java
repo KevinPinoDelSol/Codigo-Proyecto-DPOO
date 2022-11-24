@@ -20,8 +20,11 @@ public class PanelInicio extends javax.swing.JPanel {
         initComponents();
         this.parent=parent;
         jLabel1.setText(parent.empresa.getNombre());
-        jLabel2.setText(parent.usuario.getNombre()+parent.usuario.getApellidos());
-        jLabel3.setText(parent.usuario.getClass().toString());
+        jLabel2.setText(parent.usuario.getNombre()+" "+parent.usuario.getApellidos());
+        
+        String nombreDeLaClase=parent.usuario.getClass().toString();
+        nombreDeLaClase=nombreDeLaClase.substring(nombreDeLaClase.indexOf(".")+1);
+        jLabel3.setText(nombreDeLaClase);
     }
 
     /**

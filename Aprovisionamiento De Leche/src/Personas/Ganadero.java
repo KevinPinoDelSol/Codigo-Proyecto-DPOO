@@ -1,6 +1,7 @@
 package Personas;
 
 import Edificios.*;
+import java.util.Date;
 
 public class Ganadero extends Trabajador {
 
@@ -14,7 +15,7 @@ public class Ganadero extends Trabajador {
      * @param entrada
      * @param empresa
      */
-    public Ganadero(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa,String direccionFinca) {
+    public Ganadero(String nombre, long CI, String apellidos, Date entrada, EmpresaAcopio empresa,String direccionFinca) {
         super(nombre,apellidos,CI,entrada,empresa);
         this.DireccionFinca=direccionFinca;
     }

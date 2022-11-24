@@ -2,6 +2,7 @@ package Personas;
 
 import Edificios.*;
 import Vehiculos.*;
+import java.util.Date;
 
 public class Secretaria extends Usuario {
 
@@ -38,7 +39,7 @@ public class Secretaria extends Usuario {
      * @param CI
      */
    // public void GestionarUsuario(int CI) {
-     //   Usuario a=getEmpresaAsignada().getUserByCI();
+     //   Usuario a=getEmpresaAsignada().getTrabajadorByCI();
     //}
 
     /**
@@ -50,7 +51,7 @@ public class Secretaria extends Usuario {
      * @param empresa
      * @param contrasenna
      */
-    public Secretaria(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
+    public Secretaria(String nombre, long CI, String apellidos, Date entrada, EmpresaAcopio empresa, String contrasenna) {
         super( nombre,  apellidos,  CI,  entrada,  empresa, contrasenna);
     }
 

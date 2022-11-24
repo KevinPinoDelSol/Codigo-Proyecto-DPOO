@@ -6,6 +6,7 @@
 package View.Paneles;
 
 import Personas.*;
+import Vehiculos.*;
 import View.*;
 
 /**
@@ -25,6 +26,7 @@ public class panelTabla extends javax.swing.JPanel {
         titulos=setTitulos(tipo);
         datos=setDatos(objetos, tipo);
         initComponents();
+        jTable2.setRowHeight(40);
     }
 
     /**
@@ -39,6 +41,7 @@ public class panelTabla extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
+        jTable2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             this.datos,
             this.titulos
@@ -70,18 +73,38 @@ public class panelTabla extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private String[] setTitulos(String tipo) {
-      //  if(tipo.equals("Secretaria")){
-            System.out.println(parent.empresa.getSecretarias().length);
+        if(tipo.equals("Secretaria")|| tipo.equals("Contable")||tipo.equals("AdministradorAcopio")){
             return new String[]{"Nombre","Apellidos","Carnet","Fecha de Entrada"};
-    //    } else {
-   //     }
+        } else if (tipo.equals("Ganadero")||tipo.equals("Transportista")||tipo.equals("Usuario")||tipo.equals("Trabajador")) {
+            return new String[]{"Nombre","Apellidos","Carnet","Fecha de Entrada", "Datos Adicionales"};
+        }else{
+            return new String[]{"ID", "Capacidad", "Contenido en litros"};
+            
+        }
     }
 
     private Object[][] setDatos(Object[] objetos, String tipo) {
-        Object[][] datos=new Object[objetos.length][4];
+        Object[][] datos=new Object[objetos.length][5];
         
         for(int fila=0; fila<datos.length;fila++){
-            datos[fila]=new Object[]{null,null,null,null};
+            
+            if(objetos[fila] instanceof Trabajador){
+                Trabajador trabajador=(Trabajador)objetos[fila];
+                datos[fila]=new Object[]{trabajador.getNombre(),trabajador.getApellidos(),trabajador.getCI(),trabajador.getFechaDeEntradaAEmpresa(), null};
+                
+            if(trabajador instanceof Ganadero){
+                datos[fila][4]=((Ganadero)trabajador).getDireccionFinca();
+            }
+            if(trabajador instanceof Transportista){
+                datos[fila][4]=((Transportista)trabajador).getVehiculoAsignado().toString();
+            }
+                
+            } else if(objetos[fila] instanceof CamionCisterna){
+                datos[fila][0]=((CamionCisterna)objetos[fila]).getId();
+                datos[fila][1]=((CamionCisterna)objetos[fila]).getCapacidadMaximaLitros();
+                datos[fila][2]=((CamionCisterna)objetos[fila]).getContenidoActualLitros();
+                
+            }
         }
         
         

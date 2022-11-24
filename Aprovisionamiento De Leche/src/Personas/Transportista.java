@@ -5,6 +5,7 @@ import DocumentacionEmpresa.*;
 import Edificios.*;
 import Interfaces.*;
 import Excepciones.*;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +24,7 @@ public class Transportista extends Usuario implements RecepcionDeLeche {
      * @param empresa
      * @param contrasenna
      */
-    public Transportista(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna,Vehiculo VehiculoAsignado,HojaRuta RutaAsignada) {
+    public Transportista(String nombre, long CI, String apellidos, Date entrada, EmpresaAcopio empresa, String contrasenna,Vehiculo VehiculoAsignado,HojaRuta RutaAsignada) {
         super(nombre,apellidos,CI,entrada,empresa,contrasenna);
         this.VehiculoAsignado=VehiculoAsignado;
         this.RutaAsignada=RutaAsignada;
@@ -75,6 +76,22 @@ public class Transportista extends Usuario implements RecepcionDeLeche {
         } catch (Exception ex) {
             Logger.getLogger(Transportista.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Vehiculo getVehiculoAsignado() {
+        return VehiculoAsignado;
+    }
+
+    public void setVehiculoAsignado(Vehiculo VehiculoAsignado) {
+        this.VehiculoAsignado = VehiculoAsignado;
+    }
+
+    public HojaRuta getRutaAsignada() {
+        return RutaAsignada;
+    }
+
+    public void setRutaAsignada(HojaRuta RutaAsignada) {
+        this.RutaAsignada = RutaAsignada;
     }
     
 }

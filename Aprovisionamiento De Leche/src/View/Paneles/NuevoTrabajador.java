@@ -6,15 +6,18 @@
 package View.Paneles;
 
 import Personas.*;
+import Vehiculos.Vehiculo;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
 import java.awt.BorderLayout;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import java.util.Date;
+import java.util.Locale;
 /**
  *
  * @author Kevin
@@ -28,7 +31,9 @@ public class NuevoTrabajador extends javax.swing.JPanel {
      */
     public NuevoTrabajador(VentanaPrincipal parent,boolean DebeIniciarSesion, boolean rolCambiable, Trabajador trabajador) {
         this.parent = parent;
+        
         trabajadorViejo=trabajador;
+        trabajador=trabajadorViejo;
         
         initComponents();
         
@@ -44,7 +49,7 @@ public class NuevoTrabajador extends javax.swing.JPanel {
         try{
             jTextField1.setText(trabajador.getNombre());
             jTextField2.setText(trabajador.getApellidos());
-            jFormattedTextField1.setText(Integer.toString(trabajador.getCI()));
+            jFormattedTextField1.setText(Long.toString(trabajador.getCI()));
         } catch(Exception e){
             jTextField1.setText("");
             jTextField2.setText("");
@@ -76,14 +81,13 @@ public class NuevoTrabajador extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new PanelPersonalizado();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTextField3.setText("jTextField3");
 
@@ -111,42 +115,6 @@ public class NuevoTrabajador extends javax.swing.JPanel {
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        jButton1.setText("Crear usuario>>");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(255, 153, 153));
-        jButton2.setText("Cancelar X");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
-        );
-
         jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Secretaria", "Contable", "Transportista", "Administrador", "Ganadero" }));
@@ -167,7 +135,7 @@ public class NuevoTrabajador extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
+            .addGap(0, 55, Short.MAX_VALUE)
         );
 
         jRadioButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -178,37 +146,52 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 153, 153));
+        jButton2.setText("Cancelar X");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Crear usuario>>");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                                        .addComponent(jTextField2))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(49, 49, 49)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jFormattedTextField1)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jPasswordField1)))))
-                        .addGap(0, 35, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                .addComponent(jTextField2))
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel4)
+                                .addComponent(jFormattedTextField1)
+                                .addComponent(jLabel3)
+                                .addComponent(jPasswordField1)))))
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -238,9 +221,11 @@ public class NuevoTrabajador extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(12, 12, 12))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,6 +246,9 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             trabajadorNuevo.setApellidos(jTextField2.getText());
             trabajadorNuevo.setCI(Integer.valueOf(jFormattedTextField1.getText()));
             
+            Date now =new Date();
+            trabajadorNuevo.setFechaDeEntradaAEmpresa(now);
+            
             if(trabajadorNuevo instanceof Usuario){
                 String contrasenna="";
                 char[] password=jPasswordField1.getPassword();
@@ -272,6 +260,10 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             if(trabajadorNuevo instanceof Ganadero){
                 ((Ganadero)trabajadorNuevo).setDireccionFinca(((PanelPersonalizado)jPanel2).texto.getText());
             }
+            if(trabajadorNuevo instanceof Transportista){
+                ((Transportista)trabajadorNuevo).setVehiculoAsignado((Vehiculo)((PanelPersonalizado)jPanel2).combo.getSelectedItem());
+            }
+            
             if(trabajadorViejo==null){
                 try {
                     parent.empresa.addTrabajador(trabajadorNuevo);
@@ -303,21 +295,28 @@ public class NuevoTrabajador extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         String seleccionado=(String)jComboBox1.getSelectedItem();
+        
         if(seleccionado.equals("Secretaria")){
             jLabel5.setVisible(false);
             jPanel2.setVisible(false);
             trabajadorNuevo=new Secretaria();
             jRadioButton1.setEnabled(true);
+            jPasswordField1.setEnabled(true);
+            
         } else if(seleccionado.equals("Administrador")){
              jLabel5.setVisible(false);
             jPanel2.setVisible(false);
             trabajadorNuevo=new AdministradorAcopio();
             jRadioButton1.setEnabled(true);
+            jPasswordField1.setEnabled(true);
+            
         } else if(seleccionado.equals("Contable")){
             jLabel5.setVisible(false);
             jPanel2.setVisible(false);
             trabajadorNuevo=new Contable();
             jRadioButton1.setEnabled(true);
+            jPasswordField1.setEnabled(true);
+            
         } else if(seleccionado.equals("Transportista")){
             trabajadorNuevo=new Transportista();
             jPanel2.setVisible(true);
@@ -327,6 +326,8 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             jLabel5.setVisible(true);
             jLabel5.setText("Vehiculo Asignado:");
             jRadioButton1.setEnabled(true);
+            jPasswordField1.setEnabled(true);
+            
         } else if(seleccionado.equals("Ganadero")){
             trabajadorNuevo=new Ganadero();
             jPanel2.setVisible(true);
@@ -337,6 +338,8 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             jLabel5.setText("Direccion Finca");
             jRadioButton1.setEnabled(false);
             jRadioButton1.setSelected(false);
+            jPasswordField1.setEnabled(false);
+            jPasswordField1.setText("");
         } 
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -366,7 +369,6 @@ public class NuevoTrabajador extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;

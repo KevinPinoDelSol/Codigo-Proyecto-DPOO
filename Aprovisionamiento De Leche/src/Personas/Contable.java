@@ -3,6 +3,7 @@ package Personas;
 import DocumentacionEmpresa.*;
 import Edificios.*;
 import Excepciones.*;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,7 +40,7 @@ public class Contable extends Usuario {
      * @param empresa
      * @param contrasenna
      */
-    public Contable(String nombre, int CI, String apellidos, String fechaDeEntrada, EmpresaAcopio empresa, String contrasenna) {
+    public Contable(String nombre, long CI, String apellidos, Date fechaDeEntrada, EmpresaAcopio empresa, String contrasenna) {
         super( nombre,  apellidos,  CI,  fechaDeEntrada,  empresa, contrasenna);
 
     }
