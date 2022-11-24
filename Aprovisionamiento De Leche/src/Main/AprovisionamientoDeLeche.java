@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package AprovisionamientoDeLeche;
+package Main;
 
-import View.Ventana;
+import View.Paneles.LogIn;
+import View.VentanaPrincipal;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,7 +19,7 @@ public class AprovisionamientoDeLeche {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Ventana visual=new Ventana();
+        VentanaPrincipal visual=new VentanaPrincipal();
         visual.setVisible(true);
     }
     

@@ -30,8 +30,9 @@ public class CamionCisterna extends Vehiculo implements AlmacenamientoDeLeche {
      * @param contenidoInicial
      */
     public CamionCisterna(int id, int capacidad, int contenidoInicial) {
- 
-        throw new UnsupportedOperationException();
+        super(id);
+        this.CapacidadMaximaLitros=capacidad;
+        this.ContenidoActualLitros=0;
     }
 
     @Override

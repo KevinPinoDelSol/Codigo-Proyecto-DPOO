@@ -1,19 +1,22 @@
 package Personas;
 
 import Edificios.*;
+import java.util.Date;
 
 public class Trabajador extends Persona {
     
-    public Trabajador(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa){
+    public Trabajador(){}
+    
+    public Trabajador(String nombre, String apellidos, long CI, Date FechaDeEntrada, EmpresaAcopio Empresa){
         super(nombre, apellidos, CI);
         this.FechaDeEntradaAEmpresa=FechaDeEntrada;
         this.EmpresaAsignada=Empresa;
     }
 
-    private String FechaDeEntradaAEmpresa;
+    private Date FechaDeEntradaAEmpresa;
     private EmpresaAcopio EmpresaAsignada;
 
-    public String getFechaDeEntradaAEmpresa() {
+    public Date getFechaDeEntradaAEmpresa() {
         return this.FechaDeEntradaAEmpresa;
     }
 
@@ -21,7 +24,7 @@ public class Trabajador extends Persona {
      * 
      * @param FechaDeEntradaAEmpresa
      */
-    public void setFechaDeEntradaAEmpresa(String FechaDeEntradaAEmpresa) {
+    public void setFechaDeEntradaAEmpresa(Date FechaDeEntradaAEmpresa) {
         this.FechaDeEntradaAEmpresa=FechaDeEntradaAEmpresa;
     }
 

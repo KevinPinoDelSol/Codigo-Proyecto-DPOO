@@ -2,29 +2,25 @@ package Personas;
 
 import Edificios.*;
 import Interfaces.*;
+import java.util.Date;
 
 
 public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
 
     private Silo[] silosAsignados;
 
-    public AdministradorAcopio(String nombre, String apellidos, int CI, String FechaDeEntrada, EmpresaAcopio Empresa, String contrasenna) {
-        super(nombre, apellidos, CI, FechaDeEntrada, Empresa, contrasenna);
-    }
-
     /**
      * 
      * @param nombre
      * @param CI
      * @param apellidos
-     * @param entrada
-     * @param empresa
      * @param contrasenna
      */
-    public void AministradorAcopio(String nombre, int CI, String apellidos, String entrada, EmpresaAcopio empresa, String contrasenna) {
-        // TODO - implement AdministradorAcopio.AministradorAcopio
-        throw new UnsupportedOperationException();
+    public AdministradorAcopio(String nombre, String apellidos, long CI, Date FechaDeEntrada, EmpresaAcopio Empresa, String contrasenna) {
+        super(nombre, apellidos, CI, FechaDeEntrada, Empresa, contrasenna);
     }
+
+    public AdministradorAcopio(){}
 
     public Silo[] getSilosAsignados() {
         return this.silosAsignados;
