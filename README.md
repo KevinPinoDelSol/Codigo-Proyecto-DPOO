@@ -1,3 +1,4 @@
+#Aprovisionamiento de Leche
 ### Datos generales
 Este es el proyecto de DPOO de segundo semestre del curso de Ingenieria Informatica.
 
@@ -7,9 +8,8 @@ Este es el proyecto de DPOO de segundo semestre del curso de Ingenieria Informat
 
 - Colaboradores:
 
-> @KevinPinoDelSol 
-
-> @eduardoCoder1112 
+* [KevinPinoDelSol](https://github.com/KevinPinoDelSol) 
+* [Eduardo Jesus Abreu](https://github.com/eduardoCoder1112)
 
 
 
