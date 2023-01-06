@@ -6,6 +6,8 @@
 package View.BarrasDeMenu;
 
 import Personas.*;
+import Vehiculos.CamionCisterna;
+import Vehiculos.Vehiculo;
 import View.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ import javax.swing.*;
  */
 public class BarraSecretaria extends JMenuBar implements ActionListener{
     VentanaPrincipal parent;
+    MenuDocumentacion docs;
     JMenuItem inicio;
     MenuUsuarios usuarios;
     JMenu vehiculos;
@@ -28,10 +31,12 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
         inicio.addActionListener(this);
         usuarios=new MenuUsuarios("Usuarios", parent);
         vehiculos=new MenuVehiculos(parent);
+        docs = new MenuDocumentacion("Documentos", parent);
         
         add(inicio);
         add(usuarios);
         add(vehiculos);
+        add(docs);
     }
 
     @Override
@@ -88,25 +93,26 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
             JMenuItem menuPulsado=(JMenuItem)e.getSource();
             
             if(menuPulsado==tablaTodos) {
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Trabajador.class), "Trabajador");
+                parent.setVisualTabla(Trabajador.class);
             } else if(menuPulsado==tablaSecretarias){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Secretaria.class), "Secretaria");
+                parent.setVisualTabla(Secretaria.class);
             } else if(menuPulsado==tablaUsuarios){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Usuario.class), "Usuario");
+                parent.setVisualTabla(Usuario.class);
             } else if(menuPulsado==Crear){
                 parent.setVisualNuevoTrabajador(false, true, null);
             }else if(menuPulsado==tablaAdministradores){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(AdministradorAcopio.class),"Administrador");
+                parent.setVisualTabla(AdministradorAcopio.class);
             }else if(menuPulsado==tablaContables){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Contable.class), "Contable");
+                parent.setVisualTabla(Contable.class);
             }else if(menuPulsado==tablaGanaderos){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Ganadero.class),"Ganadero");
+                parent.setVisualTabla(Ganadero.class);
             }else if(menuPulsado==tablaTransportistas){
-                parent.setVisualTabla(parent.empresa.getTrabajadoresPorTipo(Transportista.class), "Transportista");
+                parent.setVisualTabla(Transportista.class);
                 
             }
         }
     }
+    
     private static class MenuVehiculos extends JMenu implements ActionListener{
         VentanaPrincipal parent;
 
@@ -131,13 +137,43 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
             JMenuItem pulsado=(JMenuItem)e.getSource();
             
             if(pulsado==tablaTodos){
-                parent.setVisualTabla(parent.empresa.getVehiculos(),"Vehiculo");
+                parent.setVisualTabla(CamionCisterna.class);
             } else if(pulsado==tablaCamionesCisterna){
-                parent.setVisualTabla(parent.empresa.getCamionesCisterna(), "CamionCisterna");
+                parent.setVisualTabla(CamionCisterna.class);
             } else if(pulsado==Crear){
                 parent.setVisualNuevoVehiculo();
             }
             
         }
+    }
+    
+    
+    
+    private class MenuEdificios extends JMenu implements ActionListener{
+        JMenuItem Empresa=new JMenuItem("Empresa");
+        JMenuItem Almacen=new JMenuItem("Almacen");
+        JMenuItem Silo=new JMenuItem("Silo");
+        
+        public MenuEdificios() {
+            add(Empresa);
+            add(Almacen);
+            add(Silo);
+            
+            Empresa.addActionListener(this);
+            Almacen.addActionListener(this);
+            Silo.addActionListener(this);
+        }
+        
+        
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JMenuItem presionado=(JMenuItem)e.getSource();
+            
+            if(presionado==Empresa){
+                
+            }
+        }
+        
     }
 }

@@ -10,14 +10,14 @@ package DocumentacionEmpresa;
  * @author Kevin
  */
 public class Cheque {
+    private RegistroDeEntrada registroCorrespondiente;
+    private double precioUnitarioLitro;
 
     public Cheque(RegistroDeEntrada registroCorrespondiente, double precioUnitarioLitro) {
         this.registroCorrespondiente = registroCorrespondiente;
         this.precioUnitarioLitro = precioUnitarioLitro;
         this.registroCorrespondiente.setPagado(true);
     }
-    private RegistroDeEntrada registroCorrespondiente;
-    private double precioUnitarioLitro;
 
     public RegistroDeEntrada getRegistroCorrespondiente() {
         return registroCorrespondiente;

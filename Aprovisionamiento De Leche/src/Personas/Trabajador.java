@@ -39,5 +39,9 @@ public class Trabajador extends Persona {
     public void setEmpresaAsignada(EmpresaAcopio EmpresaAsignada) {
         this.EmpresaAsignada=EmpresaAsignada;
     }
+    
+    public String toString(){
+        return this.getNombre()+" "+this.getCI();
+    }
 
 }

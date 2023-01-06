@@ -113,7 +113,7 @@ public class NuevoTrabajador extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setText("Contraseña:");
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.#"))));
 
         jPasswordField1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -274,9 +274,9 @@ public class NuevoTrabajador extends javax.swing.JPanel {
             trabajadorViejo=trabajadorNuevo;
             }
             
-            System.out.println(jRadioButton1.isSelected());
                 if(jRadioButton1.isSelected()){
                     parent.usuario=(Usuario)trabajadorNuevo;
+                    System.out.println(parent.usuario);
                     String seleccionado=(String)jComboBox1.getSelectedItem();
                      if(seleccionado.equals("Secretaria")){
                          parent.setVisualSecretaria();

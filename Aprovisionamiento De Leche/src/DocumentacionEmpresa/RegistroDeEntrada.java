@@ -10,7 +10,11 @@ public class RegistroDeEntrada extends RegistroDeMercancia {
     public boolean isPagado() {
         return pagado;
     }
-
+    public String isPagadoString(){
+        if(pagado) return "Ya pagado";
+        else          return "No pagado";
+    }
+    
     public void setPagado(boolean pagado) {
         this.pagado = pagado;
     }

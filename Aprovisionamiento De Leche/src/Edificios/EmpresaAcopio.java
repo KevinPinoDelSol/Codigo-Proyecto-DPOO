@@ -12,22 +12,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmpresaAcopio {
-
+    
+    // <editor-fold defaultstate="collapsed" desc="Atributos">               
     private String nombre;
     private Ganadero[] ganaderos;
     private Transportista[] transportistas;
     private AdministradorAcopio[] administradores;
     private Contable[] contables;
     private Secretaria[] secretarias;
-    private Almacen[] almacenes;
-    private RegistroDeRechazo[] registroRechazo;
-    private RegistroDeEntrada[] registroEntrada;
+    private ArrayList<Almacen> almacenes;
+    private ArrayList<Silo> silos;
+    private ArrayList<RegistroDeRechazo> registroRechazo;
+    private ArrayList<RegistroDeEntrada> registroEntrada;
+    private ArrayList<Cheque> cheque;
     private ArrayList<Vehiculo> vehiculos;
-    private Cheque[] cheque;
-    private ArrayList<Trabajador> trabajadores;
+    private ArrayList<Trabajador> trabajadores;// </editor-fold>
 
     
-    
+     // <editor-fold defaultstate="collapsed" desc="Metodos de la misma empresa">               
     public EmpresaAcopio(String nombre) {
         this.nombre=nombre;
         this.administradores=new AdministradorAcopio[0];
@@ -37,9 +39,9 @@ public class EmpresaAcopio {
         this.ganaderos=new Ganadero[0];
         this.trabajadores=new ArrayList<>();
         
-        this.registroEntrada=new RegistroDeEntrada[0];
-        this.registroRechazo=new RegistroDeRechazo[0];
-        this.cheque=new Cheque[0];
+        this.registroEntrada=new  ArrayList<RegistroDeEntrada>();
+        this.registroRechazo=new  ArrayList<RegistroDeRechazo>();
+        this.cheque=new  ArrayList<Cheque>();
         
         this.vehiculos=new ArrayList<>();
     }
@@ -50,10 +52,10 @@ public class EmpresaAcopio {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
+    } //</editor-fold>
 
     
-    
+     // <editor-fold defaultstate="collapsed" desc="Metodos para trabajadores">               
     public Trabajador[] getTrabajadores() {
         Trabajador[] todos =new Trabajador[trabajadores.size()];
         
@@ -99,13 +101,13 @@ public class EmpresaAcopio {
         throw new TrabajadorNoEncontradoExcepcion();
     }
 
-    public void deleteTrabajador(int CI) throws TrabajadorNoEncontradoExcepcion{
+    public void deleteTrabajador(Long CI) throws TrabajadorNoEncontradoExcepcion{
         
         int posicion=-1;
         boolean inexistente=true;
         
         for(int i=0; i<this.trabajadores.size() && inexistente;i++){
-            if(transportistas[i].getCI()==CI){
+            if(trabajadores.get(i).getCI()==CI){
                 posicion=i;
                 inexistente=false;
             }
@@ -117,26 +119,37 @@ public class EmpresaAcopio {
             trabajadores.remove(posicion);
         }
     }
+    //</editor-fold>
     
     
-    
-    
+    // <editor-fold defaultstate="collapsed" desc="Metodos para Documentacion de empresa">               
     public RegistroDeRechazo[] getRegistroRechazo() {
-        return this.registroRechazo;
+            RegistroDeRechazo[] registros = new RegistroDeRechazo[registroRechazo.size()];
+            for(int i=0 ; i< registroRechazo.size() ; i++){
+                registros[i]=registroRechazo.get(i);
+            }
+            return registros;
     }
 
     public RegistroDeEntrada[] getRegistroEntrada() {
-        // TODO - implement EmpresaAcopio.getRegistroEntrada
-        throw new UnsupportedOperationException();
+        RegistroDeEntrada[] registros = new RegistroDeEntrada[registroRechazo.size()];
+            for(int i=0 ; i< registroEntrada.size() ; i++){
+                registros[i]=registroEntrada.get(i);
+            }
+            return registros;
     }
 
     public Cheque[] getCheque() {
-        return cheque;
+        Cheque[] registros = new Cheque[registroRechazo.size()];
+            for(int i=0 ; i< cheque.size() ; i++){
+                registros[i]=cheque.get(i);
+            }
+            return registros;
     }
+    //</editor-fold>
     
     
-    
-
+    // <editor-fold defaultstate="collapsed" desc="Metodos de vehiculos">               
     public Vehiculo[] getVehiculos() {
         Vehiculo[] arregloVehiculos=new Vehiculo[vehiculos.size()];
         
@@ -172,9 +185,10 @@ public class EmpresaAcopio {
     public void addVehiculo(Vehiculo nuevoVehiculo) {
         vehiculos.add(nuevoVehiculo);
     }
+   // </editor-fold>
     
     
-    
+     // <editor-fold defaultstate="collapsed" desc="XD????">               
     
     /**
      * Annade un elemento a los registros de la Empresa.
@@ -184,14 +198,7 @@ public class EmpresaAcopio {
      * @throws Exception 
      *
      */
-    public <E> void  addElement (E elemento) throws Exception{
-        E[] nuevoArreglo;
-        E[] viejoArreglo;
-        if(elemento instanceof Secretaria){
-            System.out.print("Intento de añadir secretaria ");
-            viejoArreglo=(E[]) this.secretarias;
-            nuevoArreglo=(E[]) new Secretaria[this.secretarias.length+1];
-}
+    public void  addElement (Object elemento) throws Exception{
         if(elemento instanceof Vehiculo){
             addVehiculo((Vehiculo)elemento);
         }
@@ -199,20 +206,19 @@ public class EmpresaAcopio {
             addTrabajador((Trabajador)elemento);
         }
         else if(elemento instanceof Almacen){
-            viejoArreglo=(E[]) this.almacenes;
-            nuevoArreglo=(E[]) new Almacen[this.almacenes.length+1];
+            almacenes.add((Almacen) elemento);
+        }
+        else if(elemento instanceof Silo){
+            silos.add((Silo)elemento);
         }
         else if(elemento instanceof RegistroDeEntrada){
-            viejoArreglo=(E[]) this.registroEntrada;
-            nuevoArreglo=(E[]) new RegistroDeEntrada[this.registroEntrada.length+1];
+            registroEntrada.add((RegistroDeEntrada)elemento);
         }
         else if(elemento instanceof RegistroDeRechazo){
-            viejoArreglo=(E[]) this.registroRechazo;
-            nuevoArreglo=(E[]) new RegistroDeRechazo[this.registroRechazo.length+1];
+            registroRechazo.add((RegistroDeRechazo)elemento);
         }
         else if(elemento instanceof Cheque){
-            viejoArreglo=(E[]) this.cheque;
-            nuevoArreglo=(E[]) new Cheque[this.cheque.length+1];
+            cheque.add((Cheque)elemento);
         }
         else throw new Exception();
         
@@ -222,6 +228,12 @@ public class EmpresaAcopio {
     
     
     public Almacen[] getAlmacenes() {
-        return this.almacenes;
+            Almacen[] almacenes = new Almacen[registroRechazo.size()];
+            for(int i=0 ; i< cheque.size() ; i++){
+                almacenes[i] = this.almacenes.get(i);
+            }
+            return almacenes;
     }
+
+    //</editor-fold>
 }

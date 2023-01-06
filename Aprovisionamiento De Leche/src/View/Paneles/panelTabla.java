@@ -5,30 +5,81 @@
  */
 package View.Paneles;
 
+import DocumentacionEmpresa.*;
+import Edificios.Silo;
+import Excepciones.TrabajadorNoEncontradoExcepcion;
 import Personas.*;
 import Vehiculos.*;
 import View.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 
 /**
  *
  * @author Kevin
  */
-public class panelTabla extends javax.swing.JPanel {
+public class panelTabla extends javax.swing.JPanel implements ActionListener {
     String[] titulos;
     Object[][] datos;
     VentanaPrincipal parent;
+    String tipo;
+    Object[] objetos;
+    Class claseRepresentada;
     /**
      * Creates new form panelTabla
      */
-    public panelTabla(View.VentanaPrincipal parent, Object[] objetos, String tipo) {
+    public panelTabla(View.VentanaPrincipal parent, Class claseRepresentada) {
         this.parent=parent;
+        this.tipo=claseRepresentada.getName().substring(claseRepresentada.getName().indexOf('.')+1);
+        if(claseRepresentada.equals(Trabajador.class)||
+                claseRepresentada.equals(Usuario.class)||
+                claseRepresentada.equals(AdministradorAcopio.class)||
+                claseRepresentada.equals(Secretaria.class)||
+                claseRepresentada.equals(Transportista.class)||
+                claseRepresentada.equals(Contable.class)
+                ){
+            this.objetos=parent.empresa.getTrabajadoresPorTipo(claseRepresentada);
+        } else if(claseRepresentada.equals(CamionCisterna.class)){
+            this.objetos = parent.empresa.getVehiculos();
+        } else if(claseRepresentada.equals(RegistroDeEntrada.class)){
+            this.objetos = parent.empresa.getRegistroEntrada();
+        } else if(claseRepresentada.equals(RegistroDeRechazo.class)){
+            this.objetos = parent.empresa.getRegistroRechazo();
+        }else if(claseRepresentada.equals(Cheque.class)){
+            this.objetos = parent.empresa.getCheque();
+        }
+        this.claseRepresentada=claseRepresentada;
+        System.out.println(tipo);
         
         titulos=setTitulos(tipo);
         datos=setDatos(objetos, tipo);
         initComponents();
         jTable2.setRowHeight(40);
-    }
+        jTable2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e){
+                showPopup(e);
+            }
 
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                showPopup(e);
+            }
+        });
+    }
+ private void showPopup(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                    new PopupMenu(this).show(e.getComponent(),
+                            e.getX(), e.getY());
+                }
+            }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,15 +128,21 @@ public class panelTabla extends javax.swing.JPanel {
             return new String[]{"Nombre","Apellidos","Carnet","Fecha de Entrada"};
         } else if (tipo.equals("Ganadero")||tipo.equals("Transportista")||tipo.equals("Usuario")||tipo.equals("Trabajador")) {
             return new String[]{"Nombre","Apellidos","Carnet","Fecha de Entrada", "Datos Adicionales"};
-        }else{
+        }else if(tipo.equals("CamionCisterna") ){
             return new String[]{"ID", "Capacidad", "Contenido en litros"};
-            
+        }else if(tipo.equals("Silo")){
+            return new String[]{"ID", "Capacidad", "Contenido en litros", "Administrador a cargo"};
+        }else if(tipo.equals("RegistroDeMercancia")||tipo.equals("RegistroDeEntrada")||tipo.equals("RegistroDeRechazo")||tipo.equals("Cheque")){
+            return new String[]{"ID:","Fecha","Emisor", "Receptor", "Cantidad de litros","Datos adicionales"};
+        }else{
+            return new String[]{"OH NO"};
         }
     }
 
     private Object[][] setDatos(Object[] objetos, String tipo) {
         Object[][] datos=new Object[objetos.length][5];
-        
+        System.out.println("aaaaa");
+        System.out.println(objetos.length);
         for(int fila=0; fila<datos.length;fila++){
             
             if(objetos[fila] instanceof Trabajador){
@@ -104,10 +161,77 @@ public class panelTabla extends javax.swing.JPanel {
                 datos[fila][1]=((CamionCisterna)objetos[fila]).getCapacidadMaximaLitros();
                 datos[fila][2]=((CamionCisterna)objetos[fila]).getContenidoActualLitros();
                 
+            } else if(objetos[fila] instanceof Silo){
+                datos[fila][0]=((Silo)objetos[fila]).getId();
+                datos[fila][1]=((Silo)objetos[fila]).getCapacidadMaximaLitros();
+                datos[fila][2]=((Silo)objetos[fila]).getContenidoLitros();
+                datos[fila][3]=((Silo)objetos[fila]).getAdministrador();
+                
+                
+            } else if(objetos[fila] instanceof RegistroDeMercancia){
+                datos[fila][0]=((RegistroDeMercancia)objetos[fila]).getId();
+                datos[fila][1]=((RegistroDeMercancia)objetos[fila]).getFecha();
+                datos[fila][2]=((RegistroDeMercancia)objetos[fila]).getEmisor().getCI();
+                datos[fila][3]=((RegistroDeMercancia)objetos[fila]).getReceptor().getCI();
+                datos[fila][4]=((RegistroDeMercancia)objetos[fila]).getCantidadLitros();
+                
+                if(objetos[fila] instanceof RegistroDeEntrada){
+                    datos[fila][5]=((RegistroDeEntrada)objetos[fila]).isPagadoString();
+                }
+                else if (objetos[fila] instanceof Cheque){
+                    datos[fila][5]=((Cheque)objetos[fila]).getPrecioTotal()+" $";
+                }
             }
         }
-        
-        
         return datos;
     }
+
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int fila=jTable2.getSelectedRow();
+        System.out.println("popupmenu   fila: "+fila);
+        
+        if(fila==-1) {
+            VentanaNotificacion notificacion=new VentanaNotificacion(parent, "Recuerde seleccionar la fila con click izquierdo");
+        } else if(tipo.equals("Secretaria")
+                ||tipo.equals("Contable")
+                ||tipo.equals("AdministradorAcopio")
+                ||tipo.equals("Ganadero")
+                ||tipo.equals("Transportista")
+                ||tipo.equals("Usuario")
+                ||tipo.equals("Trabajador")){
+            
+            Long CI=(Long)jTable2.getValueAt(fila, 2);
+            try {
+                parent.empresa.deleteTrabajador(CI);
+            } catch (TrabajadorNoEncontradoExcepcion ex) {
+                System.out.println("no se elimino el trabajador");
+            }
+                parent.setVisualTabla(this.claseRepresentada);
+            }
+            
+    }
+    
+    
+    
+    private class PopupMenu extends JPopupMenu{
+    JMenuItem eliminar=new JMenuItem("Eliminar");
+    JMenuItem modificar=new JMenuItem("Eliminar");
+    
+    
+    public PopupMenu(panelTabla panel){
+        if(tipo.equals("Secretaria")
+                ||tipo.equals("Contable")
+                ||tipo.equals("AdministradorAcopio")
+                ||tipo.equals("Ganadero")
+                ||tipo.equals("Transportista")
+                ||tipo.equals("Usuario")
+                ||tipo.equals("Trabajador"))
+        this.add(eliminar);
+        eliminar.addActionListener(panel);
+    }
+    
+    
+}
 }

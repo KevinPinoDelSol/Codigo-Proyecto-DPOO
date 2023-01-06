@@ -4,7 +4,7 @@ import Interfaces.AlmacenamientoDeLeche;
 import Personas.AdministradorAcopio;
 
 public class Silo implements AlmacenamientoDeLeche {
-
+    private int Id;
     private int CapacidadMaximaLitros;
     private int ContenidoActualLitros;
     private AdministradorAcopio Administrador;
@@ -17,6 +17,14 @@ public class Silo implements AlmacenamientoDeLeche {
     public Silo(int capacidad, int contenido) {
         // TODO - implement Silo.Silo
         throw new UnsupportedOperationException();
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public int getCapacidadMaximaLitros() {
