@@ -2,10 +2,11 @@ package Personas;
 
 import Edificios.*;
 import Interfaces.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class AdministradorAcopio extends Usuario implements RecepcionDeLeche {
+public class AdministradorAcopio extends Usuario implements RecepcionDeLeche , Serializable{
 
     private Silo[] silosAsignados;
 

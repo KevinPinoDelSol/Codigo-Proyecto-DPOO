@@ -25,7 +25,7 @@ public class Fichero {
         
         EmpresaAcopio empresa=(EmpresaAcopio)entradaObjetos.readObject();
         
-        entradaDatos.close();
+        entradaObjetos.close();
         
         return empresa;
     }
@@ -33,7 +33,7 @@ public class Fichero {
     public static void saveEmpresa(EmpresaAcopio empresa) throws FileNotFoundException, IOException{
         File database=new File(ruta);
         if(!(database.exists())){
-            database.mkdirs();
+       //     database.mkdirs();
         }
             
         FileOutputStream salidaDatos = new FileOutputStream(database);
@@ -41,7 +41,7 @@ public class Fichero {
         
         salidaObjetos.writeObject(empresa);
         
-        salidaDatos.flush();
-        salidaDatos.close();
+        salidaObjetos.flush();
+        salidaObjetos.close();
     }
 }

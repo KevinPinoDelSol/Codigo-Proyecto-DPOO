@@ -2,8 +2,9 @@ package DocumentacionEmpresa;
 
 import Edificios.EmpresaAcopio;
 import Personas.*;
+import java.io.Serializable;
 
-public class RegistroDeEntrada extends RegistroDeMercancia {
+public class RegistroDeEntrada extends RegistroDeMercancia implements Serializable{
 
     private boolean pagado;
 

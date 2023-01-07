@@ -1,8 +1,9 @@
 package DocumentacionEmpresa;
 
 import Personas.*;
+import java.io.Serializable;
 
-public class HojaRuta {
+public class HojaRuta implements Serializable {
 
     private final Ganadero[] ganaderos;
     private int ganaderoActual;

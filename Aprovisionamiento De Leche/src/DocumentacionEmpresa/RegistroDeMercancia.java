@@ -2,8 +2,9 @@ package DocumentacionEmpresa;
 
 import Edificios.EmpresaAcopio;
 import Personas.*;
+import java.io.Serializable;
 
-public class RegistroDeMercancia {
+public class RegistroDeMercancia implements Serializable{
     protected String id;
 
     protected String fecha;

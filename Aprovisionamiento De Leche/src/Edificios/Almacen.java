@@ -1,6 +1,8 @@
 package Edificios;
 
-public class Almacen {
+import java.io.Serializable;
+
+public class Almacen implements Serializable {
 
     private Silo[] silos;
     private int id;

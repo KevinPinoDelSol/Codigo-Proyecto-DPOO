@@ -5,13 +5,14 @@ import Personas.*;
 import DocumentacionEmpresa.*;
 import Excepciones.UsuarioNoEncontradoExcepcion;
 import Vehiculos.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.lang.Class;
 import java.nio.channels.UnsupportedAddressTypeException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EmpresaAcopio {
+public class EmpresaAcopio implements Serializable{
     
     // <editor-fold defaultstate="collapsed" desc="Atributos">               
     private String nombre;

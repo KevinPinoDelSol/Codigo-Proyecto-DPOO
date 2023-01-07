@@ -21,6 +21,7 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
     VentanaPrincipal parent;
     MenuDocumentacion docs;
     JMenuItem inicio;
+    MenuItemGuardar guardar;
     MenuUsuarios usuarios;
     JMenu vehiculos;
 
@@ -29,11 +30,13 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
         
         inicio =new JMenuItem("Inicio");
         inicio.addActionListener(this);
+        guardar = new MenuItemGuardar(parent);
         usuarios=new MenuUsuarios("Usuarios", parent);
         vehiculos=new MenuVehiculos(parent);
         docs = new MenuDocumentacion("Documentos", parent);
         
         add(inicio);
+        add(guardar);
         add(usuarios);
         add(vehiculos);
         add(docs);

@@ -5,11 +5,13 @@
  */
 package DocumentacionEmpresa;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Kevin
  */
-public class Cheque {
+public class Cheque implements Serializable{
     private RegistroDeEntrada registroCorrespondiente;
     private double precioUnitarioLitro;
 

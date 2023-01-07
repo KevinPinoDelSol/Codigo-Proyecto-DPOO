@@ -2,8 +2,9 @@ package Edificios;
 
 import Interfaces.AlmacenamientoDeLeche;
 import Personas.AdministradorAcopio;
+import java.io.Serializable;
 
-public class Silo implements AlmacenamientoDeLeche {
+public class Silo implements AlmacenamientoDeLeche , Serializable{
     private int Id;
     private int CapacidadMaximaLitros;
     private int ContenidoActualLitros;
@@ -14,7 +15,7 @@ public class Silo implements AlmacenamientoDeLeche {
      * @param capacidad
      * @param contenido
      */
-    public Silo(int capacidad, int contenido) {
+    public Silo(int Id, int capacidad) {
         // TODO - implement Silo.Silo
         throw new UnsupportedOperationException();
     }

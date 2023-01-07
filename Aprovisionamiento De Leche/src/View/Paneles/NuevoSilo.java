@@ -5,9 +5,12 @@
  */
 package View.Paneles;
 
+import Edificios.Silo;
 import Personas.AdministradorAcopio;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,11 +19,13 @@ import View.VentanaPrincipal;
 public class NuevoSilo extends javax.swing.JPanel {
     VentanaPrincipal parent;
     AdministradorAcopio seleccionado;
+    AdministradorAcopio[] administradores;
     /**
      * Creates new form NuevoSilo
      */
     public NuevoSilo( VentanaPrincipal parent) {
         this.parent= parent;
+        administradores =(AdministradorAcopio[]) parent.empresa.getTrabajadoresPorTipo(AdministradorAcopio.class);
         initComponents();
     }
 
@@ -47,7 +52,7 @@ public class NuevoSilo extends javax.swing.JPanel {
 
         jLabel3.setText("Administrador");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(administradores));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -101,9 +106,17 @@ public class NuevoSilo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(seleccionado==null){
-            VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Debe seleccionar un registro primero");
+            VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Debe seleccionar un administrador primero");
         } else if ((int)jSpinner2.getValue()<=0){
-            
+            VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Ese numero no es válido para la capacidad");
+        } else{
+            Silo nuevo = new Silo((int)jSpinner1.getValue(),(int) jSpinner2.getValue());
+            try {
+                parent.empresa.addElement(nuevo);
+            } catch (Exception ex) {
+                Logger.getLogger(NuevoSilo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            parent.setVisualTabla(Silo.class);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

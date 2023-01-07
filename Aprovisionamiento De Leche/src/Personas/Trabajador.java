@@ -1,9 +1,10 @@
 package Personas;
 
 import Edificios.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Trabajador extends Persona {
+public class Trabajador extends Persona implements Serializable{
     
     public Trabajador(){}
     

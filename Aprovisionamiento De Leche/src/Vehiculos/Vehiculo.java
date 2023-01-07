@@ -1,6 +1,8 @@
 package Vehiculos;
 
-public class Vehiculo {
+import java.io.Serializable;
+
+public class Vehiculo implements Serializable{
 
     private int id;
 

@@ -72,7 +72,8 @@ public class VentanaPrincipal extends JFrame{
         
     }
         private void actualizar(){
-            remove(panelActual);
+            try{remove(panelActual);}
+                catch(Exception e){}
             try{remove(panelTemporal);
                 System.out.println("Panel actualizado");}
             catch(Exception e){}

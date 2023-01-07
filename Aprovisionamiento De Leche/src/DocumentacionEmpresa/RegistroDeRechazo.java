@@ -2,8 +2,9 @@ package DocumentacionEmpresa;
 
 import Edificios.EmpresaAcopio;
 import Personas.*;
+import java.io.Serializable;
 
-public class RegistroDeRechazo extends RegistroDeMercancia {
+public class RegistroDeRechazo extends RegistroDeMercancia implements Serializable {
 
     /**
      * 
