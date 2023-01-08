@@ -45,6 +45,8 @@ public class EmpresaAcopio implements Serializable{
         this.cheque=new  ArrayList<Cheque>();
         
         this.vehiculos=new ArrayList<>();
+        
+        this.silos = new ArrayList<>();
     }
     
     public String getNombre() {
@@ -237,4 +239,24 @@ public class EmpresaAcopio implements Serializable{
     }
 
     //</editor-fold>
+
+    public void deleteRegistroEntrada(int i) {
+        this.registroEntrada.remove(i);
+    }
+
+    public void deleteRegistroRechazo(int i) {
+        this.registroRechazo.remove(i);
+    }
+
+    public void deleteCheque(int i) {
+        this.cheque.remove(i);
+    }
+
+    public void deleteVehiculo(int i) {
+        this.vehiculos.remove(i);
+    }
+
+    public Object[] getSilos() {
+        return silos.toArray();
+    }
 }

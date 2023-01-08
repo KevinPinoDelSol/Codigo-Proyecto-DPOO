@@ -7,6 +7,7 @@ package View.Paneles;
 
 import Edificios.Silo;
 import Personas.AdministradorAcopio;
+import Personas.Trabajador;
 import View.VentanaNotificacion;
 import View.VentanaPrincipal;
 import java.util.logging.Level;
@@ -25,7 +26,11 @@ public class NuevoSilo extends javax.swing.JPanel {
      */
     public NuevoSilo( VentanaPrincipal parent) {
         this.parent= parent;
-        administradores =(AdministradorAcopio[]) parent.empresa.getTrabajadoresPorTipo(AdministradorAcopio.class);
+        Trabajador[] trabajadores= parent.empresa.getTrabajadoresPorTipo(AdministradorAcopio.class);
+        administradores= new AdministradorAcopio[trabajadores.length];
+        for (int i = 0; i < trabajadores.length; i++) {
+            administradores[i] = (AdministradorAcopio) trabajadores[i];
+        }
         initComponents();
     }
 
@@ -107,8 +112,10 @@ public class NuevoSilo extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(seleccionado==null){
             VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Debe seleccionar un administrador primero");
+            notificacion.setVisible(true);
         } else if ((int)jSpinner2.getValue()<=0){
             VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Ese numero no es válido para la capacidad");
+            notificacion.setVisible(true);
         } else{
             Silo nuevo = new Silo((int)jSpinner1.getValue(),(int) jSpinner2.getValue());
             try {

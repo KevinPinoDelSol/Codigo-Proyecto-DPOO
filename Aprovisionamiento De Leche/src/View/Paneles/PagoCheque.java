@@ -128,6 +128,7 @@ public class PagoCheque extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(seleccionado==null){
             VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Debe seleccionar un registro primero");
+            notificacion.setVisible(true);
         } else{
             this.seleccionado.setPagado(true);
             Cheque cheque = new Cheque(seleccionado, (double) jSpinner1.getValue());

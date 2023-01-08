@@ -5,6 +5,7 @@
  */
 package View.BarrasDeMenu;
 
+import Edificios.Silo;
 import Personas.*;
 import Vehiculos.CamionCisterna;
 import Vehiculos.Vehiculo;
@@ -24,6 +25,7 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
     MenuItemGuardar guardar;
     MenuUsuarios usuarios;
     JMenu vehiculos;
+    MenuEdificios silos;
 
     public BarraSecretaria(VentanaPrincipal parent) {
         this.parent=parent;
@@ -31,12 +33,14 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
         inicio =new JMenuItem("Inicio");
         inicio.addActionListener(this);
         guardar = new MenuItemGuardar(parent);
+        silos = new MenuEdificios("Silos");
         usuarios=new MenuUsuarios("Usuarios", parent);
         vehiculos=new MenuVehiculos(parent);
         docs = new MenuDocumentacion("Documentos", parent);
         
         add(inicio);
         add(guardar);
+        add(silos);
         add(usuarios);
         add(vehiculos);
         add(docs);
@@ -155,16 +159,20 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
     private class MenuEdificios extends JMenu implements ActionListener{
         JMenuItem Empresa=new JMenuItem("Empresa");
         JMenuItem Almacen=new JMenuItem("Almacen");
-        JMenuItem Silo=new JMenuItem("Silo");
+        JMenuItem Silo=new JMenuItem("Crear");
+        JMenuItem Lista=new JMenuItem("Lista");
         
-        public MenuEdificios() {
-            add(Empresa);
-            add(Almacen);
+        public MenuEdificios(String name) {
+            super(name);
+            //add(Empresa);
+            //add(Almacen);
+            add(Lista);
             add(Silo);
             
             Empresa.addActionListener(this);
             Almacen.addActionListener(this);
             Silo.addActionListener(this);
+            Lista.addActionListener(this);
         }
         
         
@@ -173,8 +181,10 @@ public class BarraSecretaria extends JMenuBar implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             JMenuItem presionado=(JMenuItem)e.getSource();
             
-            if(presionado==Empresa){
-                
+            if(presionado==Silo){
+                parent.setVisualNuevoSilo();
+            } else{
+                parent.setVisualTabla(Silo.class);
             }
         }
         

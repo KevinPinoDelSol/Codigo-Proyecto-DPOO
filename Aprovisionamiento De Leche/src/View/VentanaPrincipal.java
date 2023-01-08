@@ -14,6 +14,7 @@ import Personas.*;
 import Personas.Usuario;
 import View.BarrasDeMenu.BarraContable;
 import View.BarrasDeMenu.BarraSecretaria;
+import View.Paneles.NuevoSilo;
 import View.Paneles.NuevoTrabajador;
 import View.Paneles.NuevoVehiculo;
 import View.Paneles.PagoCheque;
@@ -178,6 +179,12 @@ public class VentanaPrincipal extends JFrame{
     public void setVisualPagoDeCheque() {
         actualizar();
         this.panelActual=new PagoCheque(this);
+        add(panelActual);
+    }
+
+    public void setVisualNuevoSilo() {
+        actualizar();
+        this.panelActual = new NuevoSilo(this);
         add(panelActual);
     }
     

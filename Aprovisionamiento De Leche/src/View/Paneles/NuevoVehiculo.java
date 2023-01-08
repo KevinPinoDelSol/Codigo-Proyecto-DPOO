@@ -6,6 +6,7 @@
 package View.Paneles;
 
 import Vehiculos.CamionCisterna;
+import View.VentanaNotificacion;
 import View.VentanaPrincipal;
 import java.awt.BorderLayout;
 import javax.swing.JSpinner;
@@ -127,9 +128,14 @@ public class NuevoVehiculo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        CamionCisterna nuevoCamion=new CamionCisterna((int)jSpinner1.getValue(), (int)spinnerCapacidad.getValue(), 0);
-        parent.empresa.addVehiculo(nuevoCamion);
-        parent.setVisualAnterior();
+        if ((int)spinnerCapacidad.getValue()<=0){
+            VentanaNotificacion notificacion= new VentanaNotificacion(parent, "Ese numero no es válido para la capacidad");
+            notificacion.setVisible(true);
+        } else{
+            CamionCisterna nuevoCamion=new CamionCisterna((int)jSpinner1.getValue(), (int)spinnerCapacidad.getValue(), 0);
+            parent.empresa.addVehiculo(nuevoCamion);
+            parent.setVisualAnterior();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

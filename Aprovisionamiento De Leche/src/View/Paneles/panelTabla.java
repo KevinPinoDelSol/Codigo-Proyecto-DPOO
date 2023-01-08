@@ -54,7 +54,7 @@ public class panelTabla extends javax.swing.JPanel implements ActionListener {
             this.objetos = parent.empresa.getRegistroRechazo();
         }else if(claseRepresentada.equals(Cheque.class)){
             this.objetos = parent.empresa.getCheque();
-        }
+        } else this.objetos = parent.empresa.getSilos();
         this.claseRepresentada=claseRepresentada;
         System.out.println(tipo);
         
@@ -76,7 +76,7 @@ public class panelTabla extends javax.swing.JPanel implements ActionListener {
     }
  private void showPopup(MouseEvent e) {
                 if (e.isPopupTrigger()) {
-                    new PopupMenu(this).show(e.getComponent(),
+                    new MyPopupMenu(this).show(e.getComponent(),
                             e.getX(), e.getY());
                 }
             }
@@ -191,9 +191,10 @@ public class panelTabla extends javax.swing.JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int fila=jTable2.getSelectedRow();
         System.out.println("popupmenu   fila: "+fila);
-        
+        System.out.println(fila==-1);
         if(fila==-1) {
             VentanaNotificacion notificacion=new VentanaNotificacion(parent, "Recuerde seleccionar la fila con click izquierdo");
+                notificacion.setVisible(true);
         } else if(tipo.equals("Secretaria")
                 ||tipo.equals("Contable")
                 ||tipo.equals("AdministradorAcopio")
@@ -208,26 +209,27 @@ public class panelTabla extends javax.swing.JPanel implements ActionListener {
             } catch (TrabajadorNoEncontradoExcepcion ex) {
                 System.out.println("no se elimino el trabajador");
             }
-                parent.setVisualTabla(this.claseRepresentada);
+            }else if(tipo.equals("RegistroDeEntrada")){
+                parent.empresa.deleteRegistroEntrada(fila);
+            } else if(tipo.equals("RegistroDeRechazo")){
+                parent.empresa.deleteRegistroRechazo(fila);
+            } else if( tipo.equals("Cheque")){
+                parent.empresa.deleteCheque(fila);
+            } else if(tipo.equals("CamionCisterna") ){
+                parent.empresa.deleteVehiculo(fila);
             }
+        parent.setVisualTabla(this.claseRepresentada);
             
     }
     
     
     
-    private class PopupMenu extends JPopupMenu{
+    private class MyPopupMenu extends JPopupMenu{
     JMenuItem eliminar=new JMenuItem("Eliminar");
     JMenuItem modificar=new JMenuItem("Eliminar");
     
     
-    public PopupMenu(panelTabla panel){
-        if(tipo.equals("Secretaria")
-                ||tipo.equals("Contable")
-                ||tipo.equals("AdministradorAcopio")
-                ||tipo.equals("Ganadero")
-                ||tipo.equals("Transportista")
-                ||tipo.equals("Usuario")
-                ||tipo.equals("Trabajador"))
+    public MyPopupMenu(panelTabla panel){
         this.add(eliminar);
         eliminar.addActionListener(panel);
     }
